@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- android:radius 弧形的半径 -->
+    <solid android:color="@color/white"/>
+    <corners
+        android:radius="@dimen/height_5"
+
+        />
+    <stroke android:color="@color/line_color"
+        android:width="@dimen/height_0.5"
+        ></stroke>
+</shape>

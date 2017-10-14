@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="gray">#cccccc</color>
+    <color name="red">#f00</color>
+
+    <color name="blue">#0485f3</color>
+    <color name="col2">#f7f7f7</color>
+    <color name="text_color">#333</color>
+    <color name="line_color">#adadad</color>
+    <color name="line_color2">#808080</color>
+    <color name="popup_bg">#80313132</color>
+
+    <color name="b_t">#33000000</color>
+    <color name="sp_m">#f5f5f9</color>
+    <color name="col_bg">#b3dafb</color>
+    <color name="seal_bg">#f0f0f6</color>
+    <color name="group_list_gray">#999999</color>
+    <color name="title_bg">#f5f5f9</color>
+</resources>

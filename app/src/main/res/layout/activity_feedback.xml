@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar"/>
+    <EditText
+        android:id="@+id/id_feedback_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_100"
+        android:layout_marginLeft="@dimen/height_10"
+        android:layout_marginRight="@dimen/height_10"
+        android:textSize="@dimen/size_16"
+        android:background="@drawable/bg_data_item"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="@dimen/height_20"
+        android:gravity="top|left"
+        android:hint="@string/mine_feed_back"
+        android:paddingLeft="@dimen/height_15"
+        android:paddingRight="@dimen/height_15"
+        android:paddingTop="@dimen/height_10"
+        android:paddingBottom="@dimen/height_10"
+        />
+    <Button
+        android:id="@+id/sub_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg2"
+        android:layout_marginTop="@dimen/height_30"
+        android:layout_marginLeft="@dimen/height_20"
+        android:layout_marginRight="@dimen/height_20"
+        android:text="@string/my_17"
+        android:textColor="@color/white"
+        />
+</LinearLayout>

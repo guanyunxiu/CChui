@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="chui.swsd.com.cchui">
+    <!-- Required 自定义用来收发消息的相关权限 -->
+    <permission
+        android:name="${applicationId}.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    <!-- Required 一些系统要求的权限，如访问网络等-->
+    <uses-permission android:name="${applicationId}.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+
+    <!--获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:name=".base.BaseApplication"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.MainActivity">
+        </activity>
+        <activity android:name=".ui.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden"
+            >
+        </activity>
+        <activity android:name=".ui.register.RigsterActivity"
+            />
+        <activity android:name=".ui.forget.ForgetActivity" />
+        <activity android:name=".ui.work.notice_details.NoticeDetailsActivity" />
+        <activity android:name=".ui.work.make_meet.MakeMeetActivity"></activity>
+        <activity android:name=".ui.work.select_people.SelectPeopleActivity"></activity>
+        <activity android:name=".ui.mine.set.SetActivity"></activity>
+        <activity android:name=".ui.mine.my_info.MyInfoActivity"></activity>
+        <activity android:name=".ui.mine.my_info.CropActivity"></activity>
+        <activity android:name=".ui.mine.my_info.UpdateNikeActivity"></activity>
+        <activity android:name=".ui.mine.kaoqin.MyKaoQinActivity"></activity>
+        <activity android:name=".ui.mine.my_jcxx.JcxxActivity"></activity>
+        <activity android:name=".ui.apply.kaoqin.KaoQinActivity"></activity>
+        <activity android:name=".ui.apply.yuandl.YuanDLActivity"></activity>
+        <activity android:name=".ui.apply.yuandl.MyYuanDLScoreActivity"></activity>
+        <activity android:name=".ui.apply.yuandl.ContractsActivity"></activity>
+        <activity android:name=".ui.apply.yuandl.dafen.DaFenActivity"></activity>
+        <activity android:name=".ui.apply.yuandl.update_fen.UpdateJcFenActivity"></activity>
+        <activity android:name=".ui.apply.yuandl.leader_fen.LeaderChaFen"></activity>
+        <activity android:name=".ui.apply.rizhi.RrZhiActivity"></activity>
+        <activity android:name=".ui.apply.rizhi.write_rizhi.WriteRbActivity"></activity>
+        <activity android:name=".ui.img_browse.ImagePagerActivity"></activity>
+        <activity android:name=".ui.apply.rizhi.write_rizhi.WriteZbActivity"></activity>
+        <activity android:name=".ui.apply.rizhi.write_rizhi.WriteYbActivity"></activity>
+        <activity android:name=".ui.apply.rizhi.reddetails_rizhi.RedDetailsRBActivity"></activity>
+        <activity android:name=".ui.apply.rizhi.reddetails_rizhi.RedDetailsZBActivity"></activity>
+        <activity android:name=".ui.apply.rizhi.reddetails_rizhi.RedDetailsYBActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.ShenPiActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_qingjia.SpLeaveActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_chuchai.SpChuChaiActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_waichu.SpWaiChuActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_jiaban.SpJiabanActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_baoxiao.SpBaoxiaoActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_content.SpContentActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_content.SpShaiShuaiActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_content.SpFqContentActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_con_details.SpQjDetailsActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_con_details.SpCCDetailsActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_con_details.SpWCDetailsActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_con_details.SpJBDetailsActivity"></activity>
+        <activity android:name=".ui.apply.shenpi.sp_con_details.SpBXDetailsActivity"></activity>
+        <activity android:name=".ui.work.file.FileDetailsActivity"></activity>
+        <activity android:name=".ui.mine.set.UpdatePassActivity"></activity>
+        <activity android:name=".ui.apply.huiyi.HuiYiMainActivity"></activity>
+        <activity android:name=".ui.apply.file.FileManagerActivity"></activity>
+        <activity android:name=".ui.apply.file.release_file.ReleaseFileActivity"></activity>
+        <activity android:name=".ui.apply.gonggao.GongGaoActivity"></activity>
+        <activity android:name=".ui.apply.gonggao.ReleaseGongGaoActivity"></activity>
+        <activity android:name=".ui.group.AddGroupActivity"></activity>
+        <activity android:name=".ui.group.GroupDetails"></activity>
+        <activity android:name=".ui.apply.yuandl.update_fen.UpdateJcFenActivity2"></activity>
+        <activity android:name=".ui.register.RigsterTwoActivity"></activity>
+        <activity android:name=".ui.register.RigsterThreeActivity"></activity>
+        <activity android:name=".ui.register.RigsterFourActivity"></activity>
+        <activity android:name=".ui.login.ManagerLoginActivity"></activity>
+        <activity android:name=".ui.mine.manager_info.ManagerInfoActivity"></activity>
+        <activity android:name=".ui.mine.manager_info.ManagerComActivity"></activity>
+        <activity android:name=".ui.mine.manager_info.ManagerDepActivity"></activity>
+        <activity android:name=".ui.apply.huiyi.HuiYiDetailsActivity"></activity>
+        <activity android:name=".ui.apply.file.FileDetailActivity"></activity>
+        <activity android:name=".ui.mine.about_me.AboutMeActivity"></activity>
+        <activity android:name=".ui.mine.set.FeedBackActivity"></activity>
+        <activity android:name=".ui.register.RegisterSelectActivity"></activity>
+        <activity android:name=".ui.apply.yuandl.dafen_new.DaFenMainActivity"></activity>
+        <activity android:name=".ui.apply.yuandl.dafen_new.DaFenSelectPeopleActivity"></activity>
+        <activity android:name=".ui.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullScreen_Welcome"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:name="com.cretin.www.cretinautoupdatelibrary.utils.DownloadService"/>
+        <!--高德地图-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="b536c4ddb4f4b5ae514cedc13d51dc53">
+        </meta-data>
+        <service android:name="com.amap.api.location.APSService"></service>
+        <!--融云-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="chui.swsd.com.cchui.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/rc_file_path" />
+        </provider>
+        <!--会话界面-->
+        <activity
+            android:name=".ui.chat.ChatActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="chui.swsd.com.cchui"
+                    android:pathPrefix="/conversation/"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+        <!--极光推送-->
+        <!-- Required SDK 核心功能-->
+        <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
+        <!-- 如：android:process=":remote" -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter >
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+                <category android:name="chui.swsd.com.cchui"/>
+            </intent-filter>
+        </service>
+
+        <!-- Required -->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <category android:name="chui.swsd.com.cchui"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <!-- Required SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="chui.swsd.com.cchui" />
+            </intent-filter>
+        </activity>
+        <!-- Required SDK核心功能-->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+        <!-- Required SDK核心功能-->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+        <!-- User defined. 用户自定义的广播接收器-->
+        <receiver
+            android:name=".receiver.JpushReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <!--Required 用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!--Required 用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!--Required 用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!--Required 用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <category android:name="chui.swsd.com.cchui" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required. For publish channel feature -->
+        <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
+        <!-- 例如: -->
+        <!-- 发到 Google Play 的APK可以设置为 google-play; -->
+        <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
+        <!-- 目前这个渠道统计功能的报表还未开放。-->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <!-- Required. AppKey copied from Portal -->
+        <meta-data android:name="JPUSH_APPKEY" android:value="db4dfd3769db536d28ade86c"/>
+
+    </application>
+
+</manifest>

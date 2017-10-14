@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_bg"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/logo"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/height_50"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/height_50"
+        android:paddingRight="@dimen/height_50"
+        android:layout_marginTop="@dimen/height_100"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_01"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_17"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <chui.swsd.com.cchui.widget.ClearWriteEditText
+                android:id="@+id/phone_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawableBottom="@drawable/edit_line_bg"
+                android:textColor="@color/white"
+                android:focusable="true"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:focusableInTouchMode="true"
+                android:paddingLeft="@dimen/height_10"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColorHint="#FFFFFF"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/height_50"
+        android:paddingRight="@dimen/height_50"
+        android:layout_marginTop="@dimen/height_20"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_03"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_17"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+            <chui.swsd.com.cchui.widget.ClearWriteEditText
+                android:id="@+id/pass_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawableBottom="@drawable/edit_line_bg"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textColor="@color/white"
+                android:paddingLeft="@dimen/height_10"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColorHint="#FFFFFF"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/height_50"
+        android:paddingRight="@dimen/height_50"
+        android:layout_marginTop="@dimen/height_20"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_04"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_17"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+            <chui.swsd.com.cchui.widget.ClearWriteEditText
+                android:id="@+id/qrpass_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawableBottom="@drawable/edit_line_bg"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textColor="@color/white"
+                android:paddingLeft="@dimen/height_10"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColorHint="#FFFFFF"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sub_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/btn_bg"
+        android:layout_marginLeft="@dimen/height_50"
+        android:layout_marginRight="@dimen/height_50"
+        android:text="@string/register_06"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size_20"
+        android:layout_marginTop="@dimen/height_70"
+         />
+</LinearLayout>

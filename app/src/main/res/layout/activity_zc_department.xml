@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/col2"
+    >
+   <include layout="@layout/toolbar"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+            </android.support.v7.widget.RecyclerView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/height_10"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/add_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/icon_bx_add"
+                    android:text="@string/register_14"
+                    android:drawablePadding="@dimen/height_5"
+                    android:textColor="@color/blue"
+                    />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/sub_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/height_50"
+                android:background="@drawable/btn_bg2"
+                android:textColor="@color/white"
+                android:text="@string/register_17"
+                />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+
+</LinearLayout>

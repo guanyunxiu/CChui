@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/col2"
+    >
+   <include layout="@layout/toolbar"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+            </android.support.v7.widget.RecyclerView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/height_10"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/add_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/icon_bx_add"
+                    android:text="@string/sp_40"
+                    android:drawablePadding="@dimen/height_5"
+                    android:textColor="@color/blue"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/height_10"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sp_69"
+                    />
+                <TextView
+                    android:id="@+id/sum_money_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="222"
+                    android:textColor="@color/text_color"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/p_sel_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rz_13"
+                android:textColor="@color/text_color"
+                android:padding="@dimen/height_15"
+                android:drawableRight="@mipmap/rz_13"
+                android:textSize="@dimen/size_16"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/height_5"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/photo_rlv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:background="@color/white"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+            <View android:layout_width="match_parent"
+                android:layout_height="@dimen/height_5"
+                android:background="@color/col2"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_40"
+                android:paddingLeft="@dimen/height_10"
+                android:paddingRight="@dimen/height_10"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/text_color"
+                    android:text="@string/rz_15"
+                    android:gravity="center_vertical"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/line_color2"
+                    android:text="@string/rz_16"
+                    android:gravity="center_vertical"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/height_10"
+                android:paddingRight="@dimen/height_10"
+                android:background="@color/white"
+                >
+                <ImageView
+                    android:id="@+id/add_img"
+                    android:layout_width="@dimen/height_50"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_add_g"
+                    android:layout_marginLeft="@dimen/height_10"
+                    android:layout_marginRight="@dimen/height_10"
+                    android:visibility="gone"
+                    />
+                <com.hhl.library.FlowTagLayout
+                    android:id="@+id/flow_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/sub_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/height_50"
+                android:background="@drawable/btn_bg2"
+                android:textColor="@color/white"
+                android:text="@string/rz_14"
+                />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+
+</LinearLayout>

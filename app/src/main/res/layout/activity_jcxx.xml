@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar"/>
+    <LinearLayout
+        android:id="@+id/nike_lv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:background="@color/col2"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/height_5"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/my_26"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+
+            />
+        <TextView
+            android:id="@+id/xueli_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:background="@color/col2"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/height_5"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/my_27"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+
+            />
+
+        <TextView
+            android:id="@+id/zhicheng_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:background="@color/col2"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/height_5"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/my_28"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+
+            />
+        <TextView
+            android:id="@+id/jineng_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:background="@color/col2"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/height_5"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/my_29"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+
+            />
+        <TextView
+            android:id="@+id/techeng_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:background="@color/col2"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/height_5"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/my_30"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+
+            />
+
+        <TextView
+            android:id="@+id/level_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:background="@color/col2"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/height_5"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/my_31"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+
+            />
+        <TextView
+            android:id="@+id/gongling_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+</LinearLayout>

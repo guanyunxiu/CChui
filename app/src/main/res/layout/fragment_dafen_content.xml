@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:multistateview="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/title_bg"
+    >
+   <android.support.v4.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           >
+           <TextView
+               android:id="@+id/title_tv"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textColor="@color/blue"
+               android:text="职业发展"
+               android:layout_gravity="center"
+               />
+           <TextView
+               android:id="@+id/description_tv"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textColor="@color/text_color"
+               android:layout_gravity="center"
+               android:background="@color/white"
+               android:padding="@dimen/height_10"
+               android:layout_marginTop="@dimen/height_10"
+               />
+           <chui.swsd.com.cchui.widget.MultiStateView
+               android:id="@+id/multiStateView"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               multistateview:msv_emptyView="@layout/empty_view"
+               multistateview:msv_errorView="@layout/error_view"
+               multistateview:msv_loadingView="@layout/activity_progressbar"
+               multistateview:msv_viewState="loading"
+               >
+               <android.support.v7.widget.RecyclerView
+                   android:id="@+id/rv_list"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   />
+           </chui.swsd.com.cchui.widget.MultiStateView>
+               <Button
+                   android:id="@+id/sub_tv"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="@dimen/height_50"
+                   android:layout_marginRight="@dimen/height_50"
+                   android:layout_marginTop="@dimen/height_20"
+                   android:layout_marginBottom="@dimen/height_20"
+                   android:background="@drawable/btn_bg2"
+                   android:textColor="@color/white"
+                   android:text="@string/rz_14"
+                   />
+       </LinearLayout>
+
+   </android.support.v4.widget.NestedScrollView>
+
+
+
+</LinearLayout>

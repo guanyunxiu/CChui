@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="@dimen/height_5"
+    android:foreground="?attr/selectableItemBackground"
+    android:layout_marginTop="@dimen/height_10"
+    app:cardBackgroundColor="@color/white"
+    android:layout_marginLeft="@dimen/height_10"
+    android:layout_marginRight="@dimen/height_10"
+    >
+ <LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/height_10"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:id="@+id/title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="关于捶捶的会议"
+                    android:textColor="@color/text_color"
+                    />
+                <TextView
+                    android:id="@+id/num_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="（3人）"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="武帅龙、关云秀、冯晋超"
+                android:textColor="@color/line_color2"
+                android:textSize="@dimen/size_14"
+                android:layout_marginTop="@dimen/height_5"
+                />
+
+            <TextView
+                android:id="@+id/time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2017-02-08 15：20"
+                android:textColor="@color/line_color2"
+                android:textSize="@dimen/size_12"
+                android:layout_marginTop="@dimen/height_5"
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/time2_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20分钟后开始"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/size_12"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:drawableTop="@mipmap/icon_time"
+            android:drawablePadding="@dimen/height_5"
+            />
+    </RelativeLayout>
+  </LinearLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:circleimageview="http://schemas.android.com/tools"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_60"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/icon_img"
+            android:layout_width="@dimen/height_35"
+            android:layout_height="@dimen/height_35"
+            android:src="@mipmap/icon_default_group"
+            circleimageview:civ_border_color="@android:color/holo_red_light"
+            circleimageview:civ_border_overlay="false"
+            circleimageview:civ_border_width="2dp"
+            circleimageview:civ_fill_color="@android:color/holo_blue_light"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:text="一想天开"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/height_20"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_0.5"
+        android:background="@color/line_color2"
+        android:layout_marginLeft="@dimen/height_10"
+        />
+</LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/col2"
+    >
+    <include layout="@layout/toolbar"/>
+    <EditText
+        android:id="@+id/title_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:background="@color/white"
+        android:textSize="@dimen/size_14"
+        android:padding="@dimen/height_10"
+        android:minLines="1"
+        android:hint="@string/gonggao_01"
+        android:textColorHint="@color/line_color2"
+        />
+
+    <EditText
+        android:id="@+id/con_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:background="@color/white"
+        android:padding="@dimen/height_10"
+        android:minLines="8"
+        android:hint="@string/gonggao_02"
+        android:textColorHint="@color/line_color2"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/height_1"
+        android:textSize="@dimen/size_14"
+        />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_40"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/text_color"
+            android:text="@string/gonggao_03"
+            android:gravity="center_vertical"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/line_color2"
+            android:text="@string/rz_16"
+            android:gravity="center_vertical"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        >
+        <com.hhl.library.FlowTagLayout
+            android:id="@+id/flow_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        </LinearLayout>
+    <Button
+        android:id="@+id/sub_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg2"
+        android:text="@string/gonggao_05"
+        android:textColor="@color/white"
+        android:layout_margin="@dimen/height_50"
+        />
+</LinearLayout>

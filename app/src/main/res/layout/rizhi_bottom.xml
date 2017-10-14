@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_50"
+    android:background="@color/white"
+    android:layout_gravity="bottom"
+    android:orientation="horizontal" >
+   <LinearLayout
+       android:id="@+id/xrz_lv"
+       android:layout_width="0dp"
+       android:layout_weight="1"
+       android:layout_height="match_parent"
+       android:gravity="center"
+       >
+       <ImageView
+           android:id="@+id/xrz_img"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@mipmap/rz_06"
+           />
+       <TextView
+           android:id="@+id/xrz_tv"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/rz_01"
+           android:textSize="@dimen/size_16"
+           android:textColor="@color/blue"
+           android:layout_marginLeft="@dimen/height_5"
+           />
+   </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/krz_lv"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/blue"
+        >
+        <ImageView
+            android:id="@+id/krz_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/rz_07"
+            />
+        <TextView
+            android:id="@+id/krz_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rz_02"
+            android:textSize="@dimen/size_16"
+            android:textColor="@color/white"
+            android:layout_marginLeft="@dimen/height_5"
+
+            />
+    </LinearLayout>
+</LinearLayout>

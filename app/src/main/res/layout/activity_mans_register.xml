@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/col2"
+    >
+    <include layout="@layout/toolbar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:padding="@dimen/height_15"
+        android:layout_marginTop="@dimen/height_5"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/my_34"
+            android:textColor="@color/text_color"
+            android:id="@+id/textView4" />
+
+        <EditText
+            android:id="@+id/user_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/line_color2"
+            android:hint="@string/my_36"
+            android:textSize="@dimen/size_14"
+            android:background="@null"
+            android:layout_marginLeft="@dimen/height_10"
+            android:maxLines="1"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:padding="@dimen/height_15"
+        android:layout_marginTop="@dimen/height_5"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/my_35"
+            android:textColor="@color/text_color"
+            />
+        <EditText
+            android:id="@+id/pass_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/line_color2"
+            android:hint="@string/my_37"
+            android:textSize="@dimen/size_14"
+            android:background="@null"
+            android:inputType="text"
+            android:maxLines="1"
+            android:layout_marginLeft="@dimen/height_10"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/sub_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_45"
+        android:text="@string/my_33"
+        android:background="@drawable/btn_bg2"
+        android:textColor="@color/white"
+        android:layout_margin="@dimen/height_40"
+        />
+</LinearLayout>

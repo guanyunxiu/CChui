@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        android:layout_gravity="center"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/name_photo_tv"
+                android:layout_width="@dimen/height_40"
+                android:layout_height="@dimen/height_40"
+                android:text="云秀"
+                android:background="@drawable/photo_bg2"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_10"
+                android:padding="@dimen/height_5"
+                />
+            <ImageView
+                android:id="@+id/line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_xx_line"
+                android:layout_gravity="center_horizontal"
+
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:text="关云秀"
+            android:layout_marginTop="@dimen/height_10"
+            android:layout_marginLeft="@dimen/height_10"
+            />
+        <TextView
+            android:id="@+id/type_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:text="发起申请"
+            android:layout_marginTop="@dimen/height_10"
+            android:layout_marginLeft="@dimen/height_10"
+            />
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2017-02-30 15:00"
+            android:layout_marginTop="@dimen/height_10"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/size_12"
+            />
+    </LinearLayout>
+
+</LinearLayout>

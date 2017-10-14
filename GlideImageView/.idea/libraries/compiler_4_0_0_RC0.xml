@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="compiler-4.0.0-RC0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/compiler/4.0.0-RC0/a787851933d12dd29d5a2f43ce02e2144bdeca79/compiler-4.0.0-RC0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/compiler/4.0.0-RC0/ca5697cbdc4e22a8f56dd89db2fd09f702f2c149/compiler-4.0.0-RC0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/sx_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/height_50"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:gravity="center"
+        android:text="筛选"
+        android:drawableLeft="@mipmap/icon_sp_sx"
+        android:drawablePadding="@dimen/height_5"
+        android:textColor="@color/white"
+        android:background="@color/blue"
+        android:clickable="true" />
+</LinearLayout>

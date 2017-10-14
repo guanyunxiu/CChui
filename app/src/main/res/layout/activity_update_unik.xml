@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar"></include>
+    <EditText
+        android:id="@+id/nike_et"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:background="@null"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        android:hint="请输入昵称"
+        android:textColor="@color/text_color"
+        android:textColorHint="@color/gray"
+        android:maxLines="1"
+        android:maxLength="10"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_0.5"
+        android:background="@color/blue"/>
+</LinearLayout>

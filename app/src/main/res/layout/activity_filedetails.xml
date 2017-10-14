@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/col2"
+    android:layout_height="match_parent">
+    <include layout="@layout/toolbar"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:textColor="@color/text_color"
+        android:text="@string/meet_05"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        android:background="@color/white"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        android:background="@color/white"
+        >
+
+        <com.hhl.library.FlowTagLayout
+            android:id="@+id/flow_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/height_5"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/meet_01"
+            android:textColor="@color/text_color"
+            />
+        <TextView
+            android:id="@+id/content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:text="全体人员开会"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/height_1"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/meet_02"
+            android:textColor="@color/text_color"
+            />
+        <TextView
+            android:id="@+id/start_time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:text="2017-02-05"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/height_10"
+        android:paddingRight="@dimen/height_10"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/height_1"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/meet_06"
+            android:textColor="@color/text_color"
+            />
+        <TextView
+            android:id="@+id/end_time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:text="30"
+            />
+        </LinearLayout>
+
+</LinearLayout>
