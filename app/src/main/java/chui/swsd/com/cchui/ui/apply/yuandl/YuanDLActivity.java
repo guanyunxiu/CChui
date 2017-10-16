@@ -58,7 +58,6 @@ public class YuanDLActivity extends BaseSwipeBackActivity {
                 }else{
                     CommonUtil.showToast(this,"不在打分时间段内");
                 }
-                //我不打分，今天是周一
                 break;
             case R.id.ckfs_btn:
                 int flag = BaseApplication.mSharedPrefUtil.getInt(SharedConstants.DAFENFLAG,0);
