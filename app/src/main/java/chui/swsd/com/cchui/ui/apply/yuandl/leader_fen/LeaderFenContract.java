@@ -19,6 +19,6 @@ public interface LeaderFenContract {
     }
     interface presenter{
         void onSelectDep();
-        void onSelectDepCon(String departname);
+        void onSelectDepCon(String departname,String time);
     }
 }

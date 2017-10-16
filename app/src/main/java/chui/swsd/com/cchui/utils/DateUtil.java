@@ -240,6 +240,10 @@ public class DateUtil {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
     return format.format(date);
   }
+  public static String getTime4(Date date) {//可根据需要自行截取数据显示
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-M");
+    return format.format(date);
+  }
   public static String getTime1(){
     long time=System.currentTimeMillis();//long now = android.os.SystemClock.uptimeMillis();
     SimpleDateFormat format=new SimpleDateFormat("HH:mm:ss");
@@ -247,6 +251,19 @@ public class DateUtil {
     String t1=format.format(d1);
     Log.e("msg", t1);
     return t1;
+  }
+  public static String getTime5(){
+    long time=System.currentTimeMillis();//long now = android.os.SystemClock.uptimeMillis();
+    SimpleDateFormat format=new SimpleDateFormat("yyyy-M");
+    Date d1=new Date(time);
+    String t1=format.format(d1);
+    return t1;
+  }
+  public static String beforeTime(){
+    Calendar c = Calendar.getInstance();//
+    int mYear = c.get(Calendar.YEAR); // 获取当前年份
+    int mMonth = c.get(Calendar.MONTH);// 获取当前月份前一个月
+    return mYear+"-"+mMonth;
   }
   public static Long getDateToSecond(String dateStr){
 

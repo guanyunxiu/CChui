@@ -41,7 +41,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract int attachLayoutRes();
 
     /**
-     * 初始化视图控件
+     * 初始化视图控件WW
      */
     protected abstract void initViews();
     /**

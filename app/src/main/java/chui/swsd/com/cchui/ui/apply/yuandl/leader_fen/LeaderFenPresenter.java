@@ -64,10 +64,11 @@ public class LeaderFenPresenter implements LeaderFenContract.presenter {
     }
 
     @Override
-    public void onSelectDepCon(String departname) {
+    public void onSelectDepCon(String departname,String time) {
         Map<String,String> maps = new HashMap<>();
         maps.put("cid", BaseApplication.mSharedPrefUtil.getInt(SharedConstants.COMID,0)+"");
         maps.put("did",departname);
+        maps.put("time",time);
         RetrofitClient.getInstance(context).createBaseApi().get(UrlAddress.DEPSELBYNAME
                 , maps, new BaseSubscriber<BaseResponse>(context) {
                     @Override
