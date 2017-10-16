@@ -13,6 +13,6 @@ public interface MyYuanDLContracts {
         void onFail();
     }
     interface presenter{
-        void onSelectScore();
+        void onSelectScore(String time);
     }
 }

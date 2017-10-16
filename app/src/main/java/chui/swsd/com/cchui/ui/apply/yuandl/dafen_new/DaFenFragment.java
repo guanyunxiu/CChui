@@ -128,11 +128,11 @@ public class DaFenFragment extends BaseFragment implements DaFenContract.view{
             totalTv.setText(listTitle.get(0).getTitle2s().size()+"");
             for(int i=0;i<listTitle.get(0).getTitle2s().size();i++){
                 YdlTitleBean.Title2sBean title2sBean =  listTitle.get(0).getTitle2s().get(i);
-                mFagments.add(DaFenContentFragment.newInstance(flagTitle,title2sBean.getBid(),screenTv.getText().toString(),title2sBean.getName(),title2sBean.getFt()));
+                mFagments.add(DaFenContentFragment.newInstance(flagTitle,title2sBean.getBid(),title2sBean.getName(),title2sBean.getName(),title2sBean.getFt()));
             }
         }else{
             totalTv.setText(1+ "");
-            mFagments.add(DaFenContentFragment.newInstance(flagTitle,listTitle.get(0).getBid(),screenTv.getText().toString(),"",listTitle.get(0).getFt()));
+            mFagments.add(DaFenContentFragment.newInstance(flagTitle,listTitle.get(0).getBid(),"","",listTitle.get(0).getFt()));
         }
     }
     @Subscribe          //订阅事件FirstEvent
@@ -145,11 +145,11 @@ public class DaFenFragment extends BaseFragment implements DaFenContract.view{
                 totalTv.setText(ydlTitleBean.getTitle2s().size() + "");
                 for (int i = 0; i < ydlTitleBean.getTitle2s().size(); i++) {
                     YdlTitleBean.Title2sBean title2sBean = ydlTitleBean.getTitle2s().get(i);
-                    mFagments.add(DaFenContentFragment.newInstance(flagTitle, title2sBean.getBid(), screenTv.getText().toString(),title2sBean.getName(),title2sBean.getFt()));
+                    mFagments.add(DaFenContentFragment.newInstance(flagTitle, title2sBean.getBid(), title2sBean.getName(),title2sBean.getName(),title2sBean.getFt()));
                 }
             } else {
                 totalTv.setText(1+ "");
-                mFagments.add(DaFenContentFragment.newInstance(flagTitle, ydlTitleBean.getBid(), screenTv.getText().toString(),"",ydlTitleBean.getFt()));
+                mFagments.add(DaFenContentFragment.newInstance(flagTitle, ydlTitleBean.getBid(),"","",ydlTitleBean.getFt()));
             }
             fragmentAdapter.notifyDataSetChanged();
            // initSetAdapter();

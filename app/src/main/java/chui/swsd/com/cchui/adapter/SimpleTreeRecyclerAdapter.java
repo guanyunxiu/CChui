@@ -109,6 +109,7 @@ public class SimpleTreeRecyclerAdapter extends TreeRecyclerAdapter {
             viewHolder.view.setVisibility(View.VISIBLE);
             viewHolder.view_line.setVisibility(View.GONE);
             if(node.getChildren().size()>0) {
+                viewHolder.checkBox.setEnabled(true);
                 viewHolder.iconImg.setImageResource(node.getIcon());
             }else{
                 viewHolder.checkBox.setEnabled(false);

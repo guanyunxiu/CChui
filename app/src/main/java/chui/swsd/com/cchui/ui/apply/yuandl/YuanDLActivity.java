@@ -52,6 +52,7 @@ public class YuanDLActivity extends BaseSwipeBackActivity {
             case R.id.dafen_btn:
                 int day = Integer.parseInt(DateUtil.getDayTime());
                 Log.i("daytime",day+"***");
+               // startActivity(new Intent(this, DaFenMainActivity.class));
                 if(day>=1 && day<=15) {
                     startActivity(new Intent(this, DaFenMainActivity.class));
                 }else{

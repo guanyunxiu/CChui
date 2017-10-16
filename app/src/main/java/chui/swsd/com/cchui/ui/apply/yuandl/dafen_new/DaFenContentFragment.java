@@ -60,10 +60,10 @@ public class DaFenContentFragment extends BaseFragment implements DaFenContract.
     public static DaFenContentFragment newInstance(int flag, String bid, String title, String valTitle,int ft) {
         DaFenContentFragment fragment = new DaFenContentFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("flag", flag);
+        bundle.putInt("flag", flag);//最大的标题标志
         bundle.putString("bid", bid);
-        bundle.putString("title", title);
-        bundle.putString("valTitle", valTitle);
+        bundle.putString("title", title);//最小的标题
+        bundle.putString("valTitle", valTitle);//最小的标题
         bundle.putInt("ft",ft);//判断是否打过分
         fragment.setArguments(bundle);
         return fragment;

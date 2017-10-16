@@ -33,9 +33,10 @@ public class MyYuanDLPresenter implements MyYuanDLContracts.presenter {
         this.mcontext = context;
     }
     @Override
-    public void onSelectScore() {
+    public void onSelectScore(String time) {
         Map<String,String> maps = new HashMap<>();
         maps.put("id", BaseApplication.mSharedPrefUtil.getInt(SharedConstants.ID,0)+"");
+        maps.put("time",time);
         RetrofitClient.getInstance(mcontext).createBaseApi().get(UrlAddress.INTEGRAL
                 , maps, new BaseSubscriber<BaseResponse>(mcontext) {
                     @Override

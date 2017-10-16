@@ -4,6 +4,34 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/time_lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/height_10"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="时间："
+            android:textColor="@color/text_color"
+            />
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color"
+            android:drawableRight="@mipmap/icon_right_arr"
+            android:drawablePadding="@dimen/height_10"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_0.5"
+        android:background="@color/col2"
+        />
+
     <chui.swsd.com.cchui.widget.MultiStateView
         android:id="@+id/multiStateView"
         android:layout_width="match_parent"
