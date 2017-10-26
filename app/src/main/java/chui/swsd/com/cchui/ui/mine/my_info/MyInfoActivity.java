@@ -46,6 +46,8 @@ import chui.swsd.com.cchui.utils.CommonUtil;
 import chui.swsd.com.cchui.utils.GetJsonDataUtil;
 import chui.swsd.com.cchui.utils.PhotoUtil;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.UserInfo;
 
 /**
  * 内容：个人资料
@@ -175,8 +177,7 @@ public class MyInfoActivity extends BaseSwipeBackActivity implements SeldataCont
             @Override
             public void onOperItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){//拍照
-                        doCamera();
-
+                    doCamera();
                 }else if(position == 1){//从相册选择
                     doSDCardPermission();
                 }
@@ -363,8 +364,12 @@ public class MyInfoActivity extends BaseSwipeBackActivity implements SeldataCont
            photoTv.setVisibility(View.GONE);
            imageview.setVisibility(View.VISIBLE);
            Glide.with(this).load(UrlAddress.URLAddress+userBean.getHeadimg()).into(imageview);
-           BaseApplication.mSharedPrefUtil.putString(SharedConstants.PHOTO,UrlAddress.URLAddress+userBean.getHeadimg());  //photo
+           //修改头像信息
+           BaseApplication.mSharedPrefUtil.putString(SharedConstants.PHOTO,userBean.getHeadimg());  //photo
            BaseApplication. mSharedPrefUtil.commit();
+           //修改融云信息
+           RongIM.getInstance().setCurrentUserInfo(new UserInfo(BaseApplication.mSharedPrefUtil.getString(SharedConstants.USERID,""), BaseApplication.mSharedPrefUtil.getString(SharedConstants.NAME,""), Uri.parse(UrlAddress.URLAddress+BaseApplication.mSharedPrefUtil.getString(SharedConstants.PHOTO,""))));
+           RongIM.getInstance().setMessageAttachedUserInfo(true);
        }
         nameTv.setText(userBean.getName());
         if(BaseApplication.mSharedPrefUtil.getString(SharedConstants.DEPARTMENT,"").equals("0")){
@@ -387,6 +392,8 @@ public class MyInfoActivity extends BaseSwipeBackActivity implements SeldataCont
     @Override
     public void onSuccess() {
         mMProgressDialog.dismiss();
+        //再查询一次
+        seldataPresenter.onSelect(BaseApplication.mSharedPrefUtil.getString(SharedConstants.PHONE,""));
         CommonUtil.showToast(this,"修改成功");
     }
 

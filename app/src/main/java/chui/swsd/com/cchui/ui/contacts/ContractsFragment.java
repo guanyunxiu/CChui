@@ -42,7 +42,8 @@ public class ContractsFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        initTitle(false, "联系人");
+       // initTitle(false, "联系人");
+        titleName.setText("联系人");
         mFagments.add(OstFragment.newInstance());
         mFagments.add(GroupFragment.newInstance());
         adapter = new MyPagerAdapter(getChildFragmentManager());

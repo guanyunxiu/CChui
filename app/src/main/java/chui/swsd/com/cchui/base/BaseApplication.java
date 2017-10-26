@@ -69,6 +69,7 @@ public class BaseApplication extends MultiDexApplication implements
         x.Ext.init(this);
         // 设置是否输出debug
         x.Ext.setDebug(true);
+        //融云初始化事件
         SealAppContext sealAppContext = new SealAppContext(this);
         sealAppContext.init();
         codeUpdate();//版本更新

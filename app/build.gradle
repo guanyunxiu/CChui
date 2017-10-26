@@ -101,4 +101,6 @@ dependencies {
     compile'com.android.support:multidex:1.0.0'
     //版本更新
     compile 'com.github.MZCretin:AutoUpdateProject:v1.1.4'
+
+    compile 'com.wang.avi:library:2.1.3'
 }

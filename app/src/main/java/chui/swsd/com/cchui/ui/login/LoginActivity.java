@@ -28,6 +28,7 @@ import chui.swsd.com.cchui.base.BaseActivity;
 import chui.swsd.com.cchui.base.BaseApplication;
 import chui.swsd.com.cchui.config.Constants;
 import chui.swsd.com.cchui.config.SharedConstants;
+import chui.swsd.com.cchui.inter.RongInterface;
 import chui.swsd.com.cchui.model.UserBean;
 import chui.swsd.com.cchui.ui.MainActivity;
 import chui.swsd.com.cchui.ui.apply.yuandl.YuanDLActivity;
@@ -50,7 +51,7 @@ import cn.jpush.android.api.TagAliasCallback;
  * Created by 关云秀 on 2017\8\10 0010.
  */
 
-public class LoginActivity extends BaseActivity implements LoginContract.view{
+public class LoginActivity extends BaseActivity implements LoginContract.view,RongInterface{
     @BindView(R.id.phone_et)
     ClearWriteEditText phoneEt;
     @BindView(R.id.pass_et)
@@ -63,6 +64,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
     Button loginBtn;
     LoginPresenter loginPresenter;
     MProgressDialog mMProgressDialog;
+    UserBean userBean2;
     @Override
     protected int attachLayoutRes() {
         return R.layout.activity_login;
@@ -122,7 +124,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
 
     @Override
     public void onSuccess(UserBean userBean) {
-        mMProgressDialog.dismiss();
+        userBean2 = userBean;
         BaseApplication.mSharedPrefUtil.putBoolean(SharedConstants.LOGINFLAG,true);
         BaseApplication.mSharedPrefUtil.commit();
         String cllientid = BaseApplication.mSharedPrefUtil.getString(SharedConstants.CLIENTID,"");
@@ -130,6 +132,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
         JPushInterface.setAlias(LoginActivity.this, cllientid, new TagAliasCallback() {
             @Override
             public void gotResult(int i, String s, Set<String> set) {
+                Log.i("tuisong","123***"+s);
                 JPushInterface.resumePush(LoginActivity.this);
             }
         });
@@ -140,23 +143,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
         }else{
             Constants.judgeFen = true;
         }
-        RongConnectUtil.connect(userBean.getToken());
-        if(userBean.getCompanyid() == 0){//没有添加公司信息
-                Intent intent = new Intent(this, RegisterSelectActivity.class);
-                intent.putExtra("userid", userBean.getId()+"");
-                startActivity(intent);
-        }else if(userBean.getDmft() == 0 && userBean.getAccount() == 1){//没有添加部门
-                Intent intent = new Intent(this, RigsterFourActivity.class);
-                intent.putExtra("cid", userBean.getCompanyid());
-                startActivity(intent);
-        }else {
-            if (userBean.getAudit() == 0) {//判断是否填写了基础分数
-                startActivity(new Intent(LoginActivity.this, UpdateJcFenActivity.class));
-            } else {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            }
-        }
-        finish();
+        RongConnectUtil rongConnectUtil = new RongConnectUtil(this);
+        rongConnectUtil.connect(userBean.getToken());
+
     }
 
     @Override
@@ -167,6 +156,32 @@ public class LoginActivity extends BaseActivity implements LoginContract.view{
     @Override
     public void onFail() {
         mMProgressDialog.dismiss();
+
+    }
+    //表示融云连接成功
+    @Override
+    public void onConnSuccess() {
+        mMProgressDialog.dismiss();
+        if(userBean2.getCompanyid() == 0){//没有添加公司信息
+            Intent intent = new Intent(this, RegisterSelectActivity.class);
+            intent.putExtra("userid", userBean2.getId()+"");
+            startActivity(intent);
+        }else if(userBean2.getDmft() == 0 && userBean2.getAccount() == 1){//没有添加部门
+            Intent intent = new Intent(this, RigsterFourActivity.class);
+            intent.putExtra("cid", userBean2.getCompanyid());
+            startActivity(intent);
+        }else {
+            if (userBean2.getAudit() == 0) {//判断是否填写了基础分数
+                startActivity(new Intent(LoginActivity.this, UpdateJcFenActivity.class));
+            } else {
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            }
+        }
+        finish();
+    }
+
+    @Override
+    public void onConnFail() {
 
     }
 }

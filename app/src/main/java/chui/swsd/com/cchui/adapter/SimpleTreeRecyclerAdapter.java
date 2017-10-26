@@ -92,6 +92,7 @@ public class SimpleTreeRecyclerAdapter extends TreeRecyclerAdapter {
             viewHolder.numTv.setVisibility(View.GONE);
             viewHolder.view.setVisibility(View.GONE);
             viewHolder.view_line.setVisibility(View.VISIBLE);
+            viewHolder.checkBox.setEnabled(true);
           /*  viewHolder.nameTv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

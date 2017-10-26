@@ -50,7 +50,8 @@ public class ApplyFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        initTitle(false, "应用");
+        //initTitle(false, "应用");
+        titleName.setText("应用");
     }
 
     @Override

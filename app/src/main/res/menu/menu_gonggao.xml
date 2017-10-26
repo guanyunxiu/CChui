@@ -5,6 +5,6 @@
         android:id="@+id/item_gonggao"
         android:title="发布"
         app:showAsAction="always"
-        
+        android:icon="@mipmap/icon_fabu"
         />
 </menu>

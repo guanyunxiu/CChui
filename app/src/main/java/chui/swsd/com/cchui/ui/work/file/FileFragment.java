@@ -113,7 +113,8 @@ public class FileFragment extends BaseFragment implements BaseQuickAdapter.Reque
 
     @Override
     public void onFail() {
-
+        mSwipeRefreshLayout.setRefreshing(false);
+        mLoadStateManager.setState(LoadStateManager.LoadState.Failure);
     }
 
     @Override

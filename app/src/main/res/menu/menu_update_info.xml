@@ -5,5 +5,6 @@
         android:id="@+id/item_update_info"
         android:title="修改"
         app:showAsAction="always"
+        android:icon="@mipmap/icon_update"
         />
 </menu>

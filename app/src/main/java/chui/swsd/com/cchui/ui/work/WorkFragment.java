@@ -50,7 +50,8 @@ public class WorkFragment extends BaseFragment {
     @Override
     protected void initViews() {
         String comName =  BaseApplication.mSharedPrefUtil.getString(SharedConstants.COMNAME,"");
-        initTitle(false, comName);
+        //initTitle(false, comName);
+        titleName.setText(comName);
         mFagments.add(ShenpiFragment.newInstance());
         mFagments.add(NoticeFragment.newInstance());
         mFagments.add(MeetFragment.newInstance());

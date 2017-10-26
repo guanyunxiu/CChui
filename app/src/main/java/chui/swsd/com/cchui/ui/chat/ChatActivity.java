@@ -39,11 +39,11 @@ public class ChatActivity extends BaseActivity {
         chatActivity = this;
         mConversationType = Conversation.ConversationType.valueOf(getIntent().getData()
                 .getLastPathSegment().toUpperCase(Locale.US));
-        if(mConversationType.equals(Conversation.ConversationType.GROUP)){
+        if(mConversationType.equals(Conversation.ConversationType.GROUP)){//是群组
             rongId = getIntent().getData().getQueryParameter("targetId");
             initTitle(true, getIntent().getData().getQueryParameter("title"));
             isgroup = false;
-        }else {
+        }else {//不是群组
             initTitle(true, getIntent().getData().getQueryParameter("title"));
             isgroup = true;
         }
@@ -61,21 +61,33 @@ public class ChatActivity extends BaseActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_grouplist, menu);
+
         if (isgroup) {
-            return false;
+            return true;
         } else {
+            getMenuInflater().inflate(R.menu.menu_grouplist, menu);
             return true;
         }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.item_grouplist:
-              Intent intent = new Intent(this, GroupDetails.class);
-                intent.putExtra("id",rongId);
-                startActivity(intent);
+        if (!isgroup) {
+            switch (item.getItemId()) {
+                case R.id.item_grouplist:
+                    Intent intent = new Intent(this, GroupDetails.class);
+                    intent.putExtra("id", rongId);
+                    startActivity(intent);
+                    return true;
+                case R.id.home:
+                    finish();
+                    return true;
+            }
+        }else{
+            if (item.getItemId() == android.R.id.home) {
+                finish();
+                return true;
+            }
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 }

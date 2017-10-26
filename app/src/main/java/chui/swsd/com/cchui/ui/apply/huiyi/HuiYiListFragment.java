@@ -139,7 +139,8 @@ public class HuiYiListFragment extends BaseFragment implements BaseQuickAdapter.
 
     @Override
     public void onFail() {
-
+        mLoadStateManager.setState(LoadStateManager.LoadState.Failure);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
     @Subscribe          //订阅事件FirstEvent
     public  void onEventMainThread(String flag){

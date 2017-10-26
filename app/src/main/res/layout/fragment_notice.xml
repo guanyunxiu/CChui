@@ -3,8 +3,14 @@
     xmlns:multistateview="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/col2"
+    android:background="@color/white"
     >
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
     <chui.swsd.com.cchui.widget.MultiStateView
         android:id="@+id/multiStateView"
         android:layout_width="match_parent"
@@ -14,18 +20,13 @@
         multistateview:msv_loadingView="@layout/activity_progressbar"
         multistateview:msv_viewState="loading"
         >
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-        </android.support.v4.widget.SwipeRefreshLayout>
-    </chui.swsd.com.cchui.widget.MultiStateView>
 
+    </chui.swsd.com.cchui.widget.MultiStateView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

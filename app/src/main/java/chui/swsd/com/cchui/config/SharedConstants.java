@@ -26,4 +26,5 @@ public class SharedConstants {
     public static final String MANAGERFLAG = "MANAGERFLAG";//是否是管理员
     public static final String DAFENFLAG = "DAFENFLAG";//0为普通用户，1为打分
     public static final String DEPARTMENT = "DEPARTMENT";//部门名称
+    public static final String USERID = "USERID";//融云的USERID
 }

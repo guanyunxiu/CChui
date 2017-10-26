@@ -1,12 +1,18 @@
 package chui.swsd.com.cchui.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.AttributeSet;
+import android.view.InflateException;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.maning.mndialoglibrary.MProgressDialog;
@@ -22,6 +28,7 @@ import chui.swsd.com.cchui.base.BaseApplication;
 import chui.swsd.com.cchui.config.SharedConstants;
 import chui.swsd.com.cchui.model.DepConBean;
 import chui.swsd.com.cchui.model.UserBean;
+import chui.swsd.com.cchui.net.UrlAddress;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.UserInfo;
 
@@ -97,7 +104,7 @@ public class CommonUtil {
         BaseApplication.mSharedPrefUtil.putInt(SharedConstants.ID,userBean.getId());  //ID
         BaseApplication.mSharedPrefUtil.putString(SharedConstants.TOKEN,userBean.getToken());  //TOKEN
         BaseApplication.mSharedPrefUtil.putString(SharedConstants.NAME,userBean.getName());  //姓名
-        BaseApplication.mSharedPrefUtil.putString(SharedConstants.PHOTO,userBean.getHeadimg());
+        BaseApplication.mSharedPrefUtil.putString(SharedConstants.PHOTO, userBean.getHeadimg());
         BaseApplication.mSharedPrefUtil.putString(SharedConstants.SESSIONID,sessionId);  //SESSIONID
         BaseApplication.mSharedPrefUtil.putInt(SharedConstants.BASICSCORE,userBean.getBasis());//基础分
         BaseApplication.mSharedPrefUtil.putInt(SharedConstants.WORKSCORE,userBean.getWork());//工作分

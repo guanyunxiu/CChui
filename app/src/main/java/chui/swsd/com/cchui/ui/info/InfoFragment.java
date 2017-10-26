@@ -3,6 +3,7 @@ package chui.swsd.com.cchui.ui.info;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -39,7 +40,10 @@ public class InfoFragment extends BaseFragment{
     }
     @Override
     protected void initViews() {
-       initTitle(false,"消息");
+       // initTitle(false,"消息");
+        setHasOptionsMenu(true);
+        toolbar.inflateMenu(R.menu.menu_addgrou);
+        titleName.setText("消息");
         setHasOptionsMenu(true);
         ConversationListFragment fragment = (ConversationListFragment) getChildFragmentManager().findFragmentById(R.id.conversationlist);
         Uri uri = Uri.parse("rong://" + getActivity().getApplicationInfo().packageName).buildUpon()
@@ -58,7 +62,19 @@ public class InfoFragment extends BaseFragment{
 
     @Override
     protected void updateViews() {
-
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.item_group:
+                        Intent intent = new Intent(mContext, SelectPeopleActivity.class);
+                        intent.putExtra("flag",1);
+                        startActivity(intent);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override

@@ -41,6 +41,7 @@ import io.rong.imkit.RongIM;
 import io.rong.imkit.emoticon.AndroidEmoji;
 import io.rong.imkit.widget.AsyncImageView;
 import io.rong.imlib.model.Group;
+import io.rong.imlib.model.UserInfo;
 
 /**
  * 内容：
@@ -191,6 +192,9 @@ public class AddGroupActivity extends BaseActivity implements AddGroupContract.v
         RongIM.getInstance().refreshGroupInfoCache(new Group(groupListBean.getRongid(), groupListBean.getName(), Uri.parse(UrlAddress.URLAddress+groupListBean.getHeadimg())));
         BroadcastManager.getInstance(this).sendBroadcast("REFRESH_GROUP_UI");
         RongIM.getInstance().startGroupChat(this, groupListBean.getRongid()+"", groupListBean.getName());
+        //刷新自己的信息
+        RongIM.getInstance().setCurrentUserInfo(new UserInfo(BaseApplication.mSharedPrefUtil.getString(SharedConstants.USERID,""), BaseApplication.mSharedPrefUtil.getString(SharedConstants.NAME,""), Uri.parse(UrlAddress.URLAddress+BaseApplication.mSharedPrefUtil.getString(SharedConstants.PHOTO,""))));
+        RongIM.getInstance().setMessageAttachedUserInfo(true);
         finish();
     }
 

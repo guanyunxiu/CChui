@@ -89,7 +89,6 @@ public class GroupDetails extends BaseActivity implements AddGroupContract.view{
     Button groupQuit;
     @BindView(R.id.group_dismiss)
     Button groupDismiss;
-
     private String id;
     private int groupId;
     MProgressDialog mMProgressDialog;
@@ -127,6 +126,7 @@ public class GroupDetails extends BaseActivity implements AddGroupContract.view{
     public void onSuccess(int flag) {
         mMProgressDialog.dismiss();
       if(flag == 2){
+          EventBus.getDefault().post("群组查询");
           CommonUtil.showToast(this,"解散并删除成功");
           RongIM.getInstance().getConversation(Conversation.ConversationType.GROUP, id, new RongIMClient.ResultCallback<Conversation>() {
               @Override
@@ -152,6 +152,7 @@ public class GroupDetails extends BaseActivity implements AddGroupContract.view{
           ChatActivity.chatActivity.finish();
           finish();
       }else if(flag == 5){
+          EventBus.getDefault().post("群组查询");
           CommonUtil.showToast(this,"删除并退出成功");
           RongIM.getInstance().getConversation(Conversation.ConversationType.GROUP, id, new RongIMClient.ResultCallback<Conversation>() {
               @Override
@@ -219,10 +220,12 @@ public class GroupDetails extends BaseActivity implements AddGroupContract.view{
         }else if(flag == 3){//修改群昵称
             CommonUtil.showToast(this,"修改名称成功");
             groupName.setText(newGroupName);
+            EventBus.getDefault().post("群组查询");
             RongIM.getInstance().refreshGroupInfoCache(new Group(groupListBean.getRongid(), groupListBean.getName(), Uri.parse(UrlAddress.URLAddress+groupListBean.getHeadimg())));
         }else if(flag == 4){//修改群头像
             CommonUtil.showToast(this,"修改头像成功");
             groupHeader.setImageBitmap(photoBitmap);
+            EventBus.getDefault().post("群组查询");
             RongIM.getInstance().refreshGroupInfoCache(new Group(groupListBean.getRongid(), groupListBean.getName(), Uri.parse(UrlAddress.URLAddress+groupListBean.getHeadimg())));
         }
 

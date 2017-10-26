@@ -104,8 +104,12 @@ public class JcxxActivity extends BaseSwipeBackActivity implements SeldataContra
         switch (item.getItemId()){
             case R.id.item_update_info:
                 startActivity(new Intent(this,UpdateJcFenActivity.class));
+                return true;
+            case R.id.home:
+                finish();
+                return true;
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 
 }

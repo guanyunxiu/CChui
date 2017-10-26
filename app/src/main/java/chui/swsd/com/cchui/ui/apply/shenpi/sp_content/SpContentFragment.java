@@ -160,6 +160,7 @@ public class SpContentFragment extends BaseFragment implements BaseQuickAdapter.
 
     @Override
     public void onFail() {
+        mSwipeRefreshLayout.setRefreshing(false);
         mLoadStateManager.setState(LoadStateManager.LoadState.Failure);
     }
 

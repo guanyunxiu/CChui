@@ -109,7 +109,8 @@ public class GongGaoFragment extends BaseFragment implements BaseQuickAdapter.Re
     }
     @Override
     public void onFail() {
-
+        mLoadStateManager.setState(LoadStateManager.LoadState.Failure);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override

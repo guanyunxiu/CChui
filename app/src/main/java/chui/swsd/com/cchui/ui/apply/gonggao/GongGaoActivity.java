@@ -101,8 +101,11 @@ public class GongGaoActivity extends BaseActivity
         switch (item.getItemId()){
             case R.id.item_gonggao:
                 startActivity(new Intent(GongGaoActivity.this,ReleaseGongGaoActivity.class));
-                break;
+                return true;
+            case R.id.home:
+                finish();
+                return true;
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 }

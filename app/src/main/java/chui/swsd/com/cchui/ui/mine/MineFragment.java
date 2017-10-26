@@ -76,7 +76,8 @@ public class MineFragment extends BaseFragment{
 
     @Override
     protected void initViews() {
-        initTitle(false, "我的");
+       // initTitle(false, "我的");
+        titleName.setText("我的");
         initData();
     }
     public void initData(){

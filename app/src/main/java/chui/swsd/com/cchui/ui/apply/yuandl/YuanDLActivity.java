@@ -53,11 +53,11 @@ public class YuanDLActivity extends BaseSwipeBackActivity {
                 int day = Integer.parseInt(DateUtil.getDayTime());
                 Log.i("daytime",day+"***");
                // startActivity(new Intent(this, DaFenMainActivity.class));
-                if(day>=1 && day<=15) {
+               // if(day>=1 && day<=15) {
                     startActivity(new Intent(this, DaFenMainActivity.class));
-                }else{
-                    CommonUtil.showToast(this,"不在打分时间段内");
-                }
+               // }else{
+                 //   CommonUtil.showToast(this,"不在打分时间段内");
+               // }
                 break;
             case R.id.ckfs_btn:
                 int flag = BaseApplication.mSharedPrefUtil.getInt(SharedConstants.DAFENFLAG,0);
@@ -67,6 +67,7 @@ public class YuanDLActivity extends BaseSwipeBackActivity {
                     startActivity(new Intent(this, MyYuanDLScoreActivity.class));
                 }
                 break;
+
         }
     }
     @Override

@@ -161,6 +161,7 @@ public class SpFqContentActivity extends BaseActivity implements BaseQuickAdapte
             shenPiBean.setItemType(shenPiBean.getCategory());
         }
         if(page == 1 && list.size() == 0){//无数据
+            mSwipeRefreshLayout.setRefreshing(false);
             mLoadStateManager.setState(LoadStateManager.LoadState.NoData);
         }else if(page == 1 && list.size()>0){//有数据，相当于下拉刷新
             mLoadStateManager.setState(LoadStateManager.LoadState.Success);
@@ -178,6 +179,7 @@ public class SpFqContentActivity extends BaseActivity implements BaseQuickAdapte
     }
     @Override
     public void onFail() {
+        mSwipeRefreshLayout.setRefreshing(false);
         mLoadStateManager.setState(LoadStateManager.LoadState.Failure);
     }
 }

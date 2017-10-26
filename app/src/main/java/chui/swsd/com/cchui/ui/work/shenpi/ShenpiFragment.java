@@ -132,6 +132,7 @@ public class ShenpiFragment extends BaseFragment implements BaseQuickAdapter.Req
             shenPiBean.setItemType(shenPiBean.getCategory());
         }
         if(page == 1 && list.size() == 0){//无数据
+            mSwipeRefreshLayout.setRefreshing(false);
             mLoadStateManager.setState(LoadStateManager.LoadState.NoData);
         }else if(page == 1 && list.size()>0){//有数据，相当于下拉刷新
             mLoadStateManager.setState(LoadStateManager.LoadState.Success);
@@ -150,6 +151,7 @@ public class ShenpiFragment extends BaseFragment implements BaseQuickAdapter.Req
 
     @Override
     public void onFail() {
+        mSwipeRefreshLayout.setRefreshing(false);
         mLoadStateManager.setState(LoadStateManager.LoadState.Failure);
     }
     @Subscribe          //订阅事件FirstEvent

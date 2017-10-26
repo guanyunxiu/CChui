@@ -118,7 +118,8 @@ public class FileManagerFragment extends BaseFragment implements BaseQuickAdapte
 
     @Override
     public void onFail() {
-
+        mLoadStateManager.setState(LoadStateManager.LoadState.Failure);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override

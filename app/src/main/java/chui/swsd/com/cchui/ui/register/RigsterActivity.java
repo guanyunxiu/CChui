@@ -115,6 +115,10 @@ public class RigsterActivity extends BaseActivity implements RegisterContract.Vi
             CommonUtil.showToast(this,"密码不为空");
             return;
         }
+        if(pass.length()<6){
+            CommonUtil.showToast(this,"密码不能小于六位");
+            return;
+        }
         if(TextUtils.isEmpty(qrpass)){
             qrpassEt.setShakeAnimation();
             CommonUtil.showToast(this,"请再次输入密码");

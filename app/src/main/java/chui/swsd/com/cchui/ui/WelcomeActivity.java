@@ -11,6 +11,7 @@ import chui.swsd.com.cchui.R;
 import chui.swsd.com.cchui.base.BaseApplication;
 import chui.swsd.com.cchui.config.Constants;
 import chui.swsd.com.cchui.config.SharedConstants;
+import chui.swsd.com.cchui.inter.RongInterface;
 import chui.swsd.com.cchui.model.UserBean;
 import chui.swsd.com.cchui.ui.apply.yuandl.YuanDLActivity;
 import chui.swsd.com.cchui.ui.apply.yuandl.update_fen.UpdateJcFenActivity;
@@ -25,7 +26,7 @@ import chui.swsd.com.cchui.utils.CommonUtil;
 import chui.swsd.com.cchui.utils.PermissionsChecker;
 import chui.swsd.com.cchui.utils.RongConnectUtil;
 
-public class WelcomeActivity extends AppCompatActivity implements LoginContract.view{
+public class WelcomeActivity extends AppCompatActivity implements LoginContract.view,RongInterface{
     LoginPresenter loginPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +58,8 @@ public class WelcomeActivity extends AppCompatActivity implements LoginContract.
 
     @Override
     public void onSuccess(UserBean userBean) {
-
-        RongConnectUtil.connect(BaseApplication.mSharedPrefUtil.getString(SharedConstants.TOKEN,""));//连接融云服务器
+        RongConnectUtil rongConnectUtil = new RongConnectUtil(this);
+        rongConnectUtil.connect(BaseApplication.mSharedPrefUtil.getString(SharedConstants.TOKEN,""));//连接融云服务器
 
         overridePendingTransition(R.anim.hold, R.anim.zoom_in_exit);
         Constants.judgeFlag = 1;
@@ -95,8 +96,19 @@ public class WelcomeActivity extends AppCompatActivity implements LoginContract.
         CommonUtil.showToast(this,"登录失败，请重新登录");
         finish();
         overridePendingTransition(R.anim.hold, R.anim.zoom_in_exit);
-        RongConnectUtil.connect(BaseApplication.mSharedPrefUtil.getString(SharedConstants.TOKEN,""));//连接融云服务器
+        RongConnectUtil rongConnectUtil = new RongConnectUtil(this);
+        rongConnectUtil.connect(BaseApplication.mSharedPrefUtil.getString(SharedConstants.TOKEN,""));//连接融云服务器
         Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onConnSuccess() {
+
+    }
+
+    @Override
+    public void onConnFail() {
+
     }
 }

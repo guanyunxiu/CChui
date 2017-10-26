@@ -15,6 +15,7 @@ import com.amap.api.maps2d.MapView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import chui.swsd.com.cchui.R;
+import chui.swsd.com.cchui.utils.CommonUtil;
 import chui.swsd.com.cchui.widget.LoadStateManager;
 import chui.swsd.com.cchui.widget.MultiStateView;
 
@@ -55,7 +56,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(attachLayoutRes());
-
         getAppInstance().addActivity(this);
         ButterKnife.bind(this);
         if(mapView != null) {
