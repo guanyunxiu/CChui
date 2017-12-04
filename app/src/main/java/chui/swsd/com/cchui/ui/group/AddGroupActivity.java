@@ -28,6 +28,7 @@ import butterknife.OnClick;
 import chui.swsd.com.cchui.R;
 import chui.swsd.com.cchui.base.BaseActivity;
 import chui.swsd.com.cchui.base.BaseApplication;
+import chui.swsd.com.cchui.base.SealAppContext;
 import chui.swsd.com.cchui.broadcast.BroadcastManager;
 import chui.swsd.com.cchui.config.SharedConstants;
 import chui.swsd.com.cchui.model.GroupListBean;

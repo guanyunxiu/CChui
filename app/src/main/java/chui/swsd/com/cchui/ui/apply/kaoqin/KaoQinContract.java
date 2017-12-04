@@ -11,7 +11,7 @@ import chui.swsd.com.cchui.model.KaoQinBean;
 
 public  interface KaoQinContract {
     interface view {
-        void onSuccess();
+        void onSuccess(int code);
 
         void onSuccess(List<KaoQinBean> kaoQinBeanList);
 
@@ -19,7 +19,7 @@ public  interface KaoQinContract {
     }
 
     interface presenter {
-        void onSubmit(String address, double longitude, double latitude);
+        void onSubmit(String address, double longitude, double latitude,int outwork,int category);
 
         void onSelect();
     }

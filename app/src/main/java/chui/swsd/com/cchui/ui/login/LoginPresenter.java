@@ -45,7 +45,7 @@ public class LoginPresenter  implements LoginContract.Presenter{
                     @Override
                     public void onError(ExceptionHandle.ResponeThrowable e) {
                         e.printStackTrace();
-                        view.onFail();
+                        view.onFailer();
                     }
                     @Override
                     public void onNext(BaseResponse responseBody) {
@@ -56,7 +56,7 @@ public class LoginPresenter  implements LoginContract.Presenter{
                             CommonUtil.saveUser(responseBody.getSessionId(),user,pass);
                             view.onSuccess(user);
                         }else{
-                            view.onFail();
+                            view.onFailer();
                         }
                     }
                 });
@@ -72,14 +72,14 @@ public class LoginPresenter  implements LoginContract.Presenter{
                     @Override
                     public void onError(ExceptionHandle.ResponeThrowable e) {
                         e.printStackTrace();
-                        view.onFail();
+                        view.onFailer();
                     }
                     @Override
                     public void onNext(BaseResponse responseBody) {
                         if(FailMsg.showMsg(context,responseBody.getCode())) {
                             view.onSuccess();
                         }else{
-                            view.onFail();
+                            view.onFailer();
                         }
                     }
                 });

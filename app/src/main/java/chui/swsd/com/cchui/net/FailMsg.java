@@ -16,7 +16,7 @@ public class FailMsg {
     public static final int ERR_NO_LOGIN = 4; //没有登录
     public static final int ERR_INVALID_SESSION = ERR_NO_LOGIN; //无效的session
     public static final int ERR_NOT_RIGHT = 5; //权限不足
-    public static final int ERR_DISTANCE_OVERRUN = 6; //距离打卡地点太远
+
     public static final int ERR_SMS_FAILED = 7; //sms验证码验证失败
     public static final int ERR_NO_PRE_CHECK_PHONE = 8;//错误的手机号
     public static final int ERR_SQL_FAILED = 9; //sql操作失败
@@ -45,12 +45,8 @@ public class FailMsg {
               /*  Intent intent = new Intent(context,LoginActivity.class);
                 context.startActivity(intent);*/
                 return false;
-
             case ERR_NOT_RIGHT:
                 CommonUtil.showToast(context,"权限不足");
-                return false;
-            case ERR_DISTANCE_OVERRUN:
-                CommonUtil.showToast(context,"距离打卡地点太远");
                 return false;
             case ERR_SMS_FAILED:
                 CommonUtil.showToast(context,"sms验证码验证失败");

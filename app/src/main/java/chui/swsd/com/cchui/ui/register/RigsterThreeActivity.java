@@ -1,5 +1,6 @@
 package chui.swsd.com.cchui.ui.register;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -19,6 +21,7 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.maning.mndialoglibrary.MProgressDialog;
+import com.tbruyelle.rxpermissions.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -42,6 +45,7 @@ import chui.swsd.com.cchui.utils.CommonUtil;
 import chui.swsd.com.cchui.utils.DateUtil;
 import chui.swsd.com.cchui.utils.GetJsonDataUtil;
 import chui.swsd.com.cchui.widget.ClearWriteEditText;
+import rx.functions.Action1;
 
 /**
  * 内容：
@@ -93,6 +97,7 @@ public class RigsterThreeActivity extends BaseActivity implements RegisterContra
 
     @Override
     protected void initViews() {
+        getPermission();
         userid = getIntent().getStringExtra("userid");
         managerFlag = getIntent().getIntExtra("managerFlag",0);
         initTitle(true, "创建公司");
@@ -350,6 +355,7 @@ public class RigsterThreeActivity extends BaseActivity implements RegisterContra
         long endTime = DateUtil.getDateToSecond5(endTimeTv.getText().toString());
         mMProgressDialog = CommonUtil.configDialogDefault(this);
         mMProgressDialog.show("正在提交...");
+        Log.i("long",Constants.Longitude+"*****"+Constants.Latitude+"");
         registerPresenter.onTwoSubmit(userid,company,province,city,county,detailsAdd, Constants.Longitude+"",Constants.Latitude+"",startTime+"",endTime+"",peoples,account,pass,yqm);
 
     }
@@ -412,5 +418,21 @@ public class RigsterThreeActivity extends BaseActivity implements RegisterContra
             imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
+    //判断权限
+    private void getPermission() {
+        new RxPermissions(this).request(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+         )
+                .subscribe(new Action1<Boolean>() {
+                    @Override
+                    public void call(Boolean granted) {
+                        if (granted) {
 
+                        } else {
+
+                        }
+                    }
+                });
+    }
 }

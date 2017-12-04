@@ -18,5 +18,6 @@ public class SeldataContract {
     interface presenter{
         void onSelect(String phone);
         void onUpdate(String sex,String address,File photo);
+        void onRongSelect(String rongid);
     }
 }

@@ -49,6 +49,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:nextFocusForward="@+id/pass_et"
                 />
 
         </LinearLayout>
@@ -91,6 +94,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:nextFocusForward="@+id/qrpass_et"
                 />
 
         </LinearLayout>
@@ -130,6 +136,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 />
 
         </LinearLayout>

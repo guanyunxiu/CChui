@@ -24,6 +24,7 @@ import chui.swsd.com.cchui.model.PhotoBean;
 import chui.swsd.com.cchui.model.RzDetailsBean;
 import chui.swsd.com.cchui.net.UrlAddress;
 import chui.swsd.com.cchui.ui.apply.shenpi.sp_baoxiao.SpBaoxiaoActivity;
+import chui.swsd.com.cchui.ui.apply.shenpi.sp_con_details.SpBXDetailsActivity;
 import chui.swsd.com.cchui.ui.img_browse.ImagePagerActivity;
 import chui.swsd.com.cchui.utils.CommonUtil;
 import chui.swsd.com.cchui.utils.DateUtil;
@@ -84,13 +85,14 @@ public class RedDetailsRBActivity extends BaseSwipeBackActivity implements RedDe
         imageItemAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int i) {
-                List<String> stringList = new ArrayList<String>();
-                String photo = UrlAddress.URLAddress+photoBeanList.get(i).getPath();
-                stringList.add(photo);
+                ArrayList<String> urls = new ArrayList<>();
+                for (PhotoBean photosBean : photoBeanList) {
+                    urls.add(UrlAddress.URLAddress+photosBean.getPath());
+                }
                 Intent intent = new Intent(RedDetailsRBActivity.this, ImagePagerActivity.class);
                 // 图片url,为了演示这里使用常量，一般从数据库中或网络中获取
-                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, (Serializable) stringList);
-                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX,i);
+                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, urls);
+                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, i);
                 startActivity(intent);
             }
         });

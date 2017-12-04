@@ -128,4 +128,30 @@ public class SeldataPresenter implements SeldataContract.presenter {
             }
         });*/
     }
+
+    @Override
+    public void onRongSelect(String rongid) {
+        Map<String,String> maps = new HashMap<>();
+        maps.put("rongid",rongid);
+        RetrofitClient.getInstance(context).createBaseApi().get(UrlAddress.SELRONGID
+                , maps, new BaseSubscriber<BaseResponse>(context) {
+                    @Override
+                    public void onError(ExceptionHandle.ResponeThrowable e) {
+                        e.printStackTrace();
+                        view.onFail();
+                    }
+                    @Override
+                    public void onNext(BaseResponse responseBody) {
+                        if(FailMsg.showMsg(context,responseBody.getCode())) {
+                            String s = new Gson().toJson(responseBody.getObj());
+                            Log.i("response",s+"***");
+                            UserBean user = new Gson().fromJson(s, new TypeToken<UserBean>() {
+                            }.getType());
+                            view.onSuccess(user);
+                        }else{
+                            view.onFail();
+                        }
+                    }
+                });
+    }
 }

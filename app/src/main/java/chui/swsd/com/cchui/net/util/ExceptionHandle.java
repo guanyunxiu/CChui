@@ -22,7 +22,7 @@ public class ExceptionHandle {
             ex = new ResponeThrowable(e, ERROR.HTTP_ERROR);
             switch (httpException.code()) {
                 default:
-                    ex.message = "网络错误";
+                   // ex.message = "网络错误";
                     break;
             }
             return ex;

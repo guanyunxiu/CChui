@@ -115,7 +115,7 @@ public class LeaveDetailsBean {
         private String category;
         private String starttime;
         private String endtime;
-        private int days;
+        private double days;
         private String reason;
         private String auditid;
         private int ft;
@@ -155,11 +155,11 @@ public class LeaveDetailsBean {
             this.endtime = endtime;
         }
 
-        public int getDays() {
+        public double getDays() {
             return days;
         }
 
-        public void setDays(int days) {
+        public void setDays(double days) {
             this.days = days;
         }
 

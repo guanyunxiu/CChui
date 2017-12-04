@@ -1,5 +1,6 @@
 package chui.swsd.com.cchui.utils;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
@@ -67,7 +68,6 @@ public class RongConnectUtil {
     public void setSerUserInfor(String userId){
         BaseApplication.mSharedPrefUtil.putString(SharedConstants.USERID,userId);//融云的userid
         BaseApplication. mSharedPrefUtil.commit();
-
         Log.i("rongPhoto",BaseApplication.mSharedPrefUtil.getString(SharedConstants.PHOTO,"")+"********");
         RongIM.getInstance().setCurrentUserInfo(new UserInfo(userId, BaseApplication.mSharedPrefUtil.getString(SharedConstants.NAME,""), Uri.parse(UrlAddress.URLAddress+BaseApplication.mSharedPrefUtil.getString(SharedConstants.PHOTO,""))));
         RongIM.getInstance().setMessageAttachedUserInfo(true);

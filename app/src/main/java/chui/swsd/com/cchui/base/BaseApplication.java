@@ -3,6 +3,7 @@ package chui.swsd.com.cchui.base;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Environment;
 import android.support.multidex.MultiDexApplication;
@@ -33,11 +34,14 @@ import chui.swsd.com.cchui.config.Constants;
 import chui.swsd.com.cchui.config.SharedConstants;
 import chui.swsd.com.cchui.model.UpdateModel;
 import chui.swsd.com.cchui.net.UrlAddress;
+import chui.swsd.com.cchui.ui.login.LoginActivity;
+import chui.swsd.com.cchui.utils.CommonUtil;
 import chui.swsd.com.cchui.utils.DateUtil;
 import chui.swsd.com.cchui.utils.FontsOverride;
 import chui.swsd.com.cchui.utils.SharedPrefUtil;
 import cn.jpush.android.api.JPushInterface;
 import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
 
 /**
  * 内容：
@@ -51,6 +55,7 @@ public class BaseApplication extends MultiDexApplication implements
     public static SharedPrefUtil mSharedPrefUtil;
     protected DbManager db;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -62,6 +67,9 @@ public class BaseApplication extends MultiDexApplication implements
         Thread.setDefaultUncaughtExceptionHandler(this);
         initImageLoader();
         RongIM.init(this);//初始化融云
+        RongIM.setConnectionStatusListener(new MyConnectionStatusListener());
+        //RongIM.getInstance().setMessageAttachedUserInfo(true);
+        SealAppContext.init(this);
         JPushInterface.setDebugMode(true);//极光推送
         JPushInterface.init(this);
         iniMap();
@@ -70,8 +78,8 @@ public class BaseApplication extends MultiDexApplication implements
         // 设置是否输出debug
         x.Ext.setDebug(true);
         //融云初始化事件
-        SealAppContext sealAppContext = new SealAppContext(this);
-        sealAppContext.init();
+        Log.i("response","有没有执行application");
+
         codeUpdate();//版本更新
     }
 
@@ -206,5 +214,33 @@ public class BaseApplication extends MultiDexApplication implements
                 .setTransition(new UpdateModel())
                 .build();
         CretinAutoUpdateUtils.init(builder);
+    }
+    private class MyConnectionStatusListener implements RongIMClient.ConnectionStatusListener {
+
+        @Override
+        public void onChanged(RongIMClient.ConnectionStatusListener.ConnectionStatus connectionStatus) {
+
+            switch (connectionStatus){
+
+                case CONNECTED://连接成功。
+                    break;
+                case DISCONNECTED://断开连接。
+                    break;
+                case CONNECTING://连接中。
+
+                    break;
+                case NETWORK_UNAVAILABLE://网络不可用。
+                    break;
+                case KICKED_OFFLINE_BY_OTHER_CLIENT://用户账户在其他设备登录，本机会被踢掉线
+                    final Intent goLogoIntent = new Intent();
+                    goLogoIntent.setClass(getApplicationContext(), LoginActivity.class);
+                    goLogoIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    goLogoIntent.putExtra("rongstatus", 1);
+                    getApplicationContext().startActivity(goLogoIntent);
+                    BaseApplication.removeActivity();
+
+                    break;
+            }
+        }
     }
 }

@@ -102,7 +102,12 @@ public class SpContentFragment extends BaseFragment implements BaseQuickAdapter.
                     intent = new Intent(mContext, SpBXDetailsActivity.class);
                 }
                 intent.putExtra("id", shenPiBean.getIds());
-                intent.putExtra("spStatus", 1);
+                if(currentPos == 0){
+                    intent.putExtra("spStatus", 1);
+                }else{
+                    intent.putExtra("spStatus", 0);
+                }
+
                 startActivity(intent);
             }
         });

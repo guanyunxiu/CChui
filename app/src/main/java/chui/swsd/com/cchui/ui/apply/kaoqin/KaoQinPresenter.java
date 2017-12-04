@@ -31,13 +31,24 @@ public class KaoQinPresenter implements KaoQinContract.presenter {
         this.view = view;
         this.context = context;
     }
+
+    /**
+     * 打卡
+     * @param address 地址
+     * @param longitude 经度
+     * @param latitude 纬度
+     * @param outwork  是否是外勤（0正常，1外勤）
+     * @param category 上班标志（0是上班，1是下班）
+     */
     @Override
-    public void onSubmit(String address, double longitude, double latitude) {
+    public void onSubmit(String address, double longitude, double latitude,int outwork,int category) {
         Map<String,Object> maps = new HashMap<>();
         maps.put("userid", BaseApplication.mSharedPrefUtil.getInt(SharedConstants.ID,0)+"");
         maps.put("address",address);
         maps.put("longitude",longitude);
         maps.put("latitude",latitude);
+        maps.put("outwork",outwork);
+        maps.put("category",category);
         RetrofitClient.getInstance(context).createBaseApi().post3(UrlAddress.SIGNINSERT
                 , maps, new BaseSubscriber<BaseResponse>(context) {
                     @Override
@@ -48,7 +59,7 @@ public class KaoQinPresenter implements KaoQinContract.presenter {
                     @Override
                     public void onNext(BaseResponse responseBody) {
                         if(FailMsg.showMsg(context,responseBody.getCode())) {
-                            view.onSuccess();
+                            view.onSuccess(responseBody.getCode());
                         }else{
                             view.onFail();
                         }

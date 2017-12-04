@@ -216,4 +216,24 @@ public class CommonUtil {
             return name;
         }
     }
+    private static final double EARTH_RADIUS = 6378137;//地球平均半径
+    public static float getDistance(double lng, double lat,double clng, double clat){
+        double radLat1 = rad(lat);
+        double radLat2 = rad(clat);
+        double radLng1 = rad(lng);
+        double radLng2 = rad(clng);
+        double a = radLat1 - radLat2;
+        double b = radLng1 - radLng2;
+        double s = 2 * Math.asin(
+                Math.sqrt(
+                        Math.pow(Math.sin(a/2),2)+ Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)
+                )
+        );
+        s = s * EARTH_RADIUS;
+        s = Math.round(s * 10000) / 10000;
+        return (float) s;
+    }
+    private static double rad(double d){
+        return d * Math.PI / 180.0;
+    }
 }

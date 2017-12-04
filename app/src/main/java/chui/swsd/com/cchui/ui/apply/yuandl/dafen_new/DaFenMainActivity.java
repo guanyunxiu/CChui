@@ -25,7 +25,7 @@ public class DaFenMainActivity extends BaseActivity {
     @BindView(R.id.view_pager)
     ViewPager viewPager;
     private ArrayList<Fragment> mFagments = new ArrayList<>();
-    private String[] mTitles = {"公司价值", "社会价值","员工"};
+    private String[] mTitles = {"公司价值", "社会价值","员工价值"};
     MyPagerAdapter adapter;
 
     @Override

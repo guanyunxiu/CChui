@@ -84,11 +84,14 @@ public class RigsterTwoActivity extends BaseActivity implements RegisterContract
 
     @Override
     public void onFail() {
-        mMProgressDialog.dismiss();
+        if(mMProgressDialog != null) {
+            mMProgressDialog.dismiss();
+        }
     }
 
     @Override
     public void onSuccess(List<CompanyBean> companyBeanList) {
+        cid =  companyBeanList.get(0).getId();
         initNoLinkOptionsPicker(companyBeanList);//查询出所有的公司
     }
 
@@ -96,10 +99,17 @@ public class RigsterTwoActivity extends BaseActivity implements RegisterContract
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.com_name_tv:
-                pvNoLinkOptions.show();
+                if(pvNoLinkOptions!=null) {
+                    pvNoLinkOptions.show();
+                }
                 break;
             case R.id.sub_btn:
                 String yqmStr = yqmEt.getText().toString();
+                String company = comNameTv.getText().toString();
+                if(TextUtils.isEmpty(company)){
+                    CommonUtil.showToast(this,"公司不能为空");
+                    return;
+                }
                 if(TextUtils.isEmpty(yqmStr)){
                     CommonUtil.showToast(this,"邀请码不能为空");
                     return;

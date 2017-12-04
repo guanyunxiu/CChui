@@ -23,6 +23,7 @@ import chui.swsd.com.cchui.R;
 import chui.swsd.com.cchui.adapter.SimpleTreeRecyclerAdapter;
 import chui.swsd.com.cchui.base.BaseFragment;
 import chui.swsd.com.cchui.model.DepConBean;
+import chui.swsd.com.cchui.net.UrlAddress;
 import chui.swsd.com.cchui.ui.apply.yuandl.ContractsActivity;
 import chui.swsd.com.cchui.ui.apply.yuandl.dafen.DaFenActivity;
 import chui.swsd.com.cchui.widget.DensityUtil;
@@ -103,7 +104,6 @@ public class OstFragment extends BaseFragment implements OstContract.view{
                String s = m+"";
             mDatas.add(new Node(s,"",1+"",depConBean.getName()));
             for(DepConBean.UserBasisBean userBasisBean:depConBean.getUserBasis()){
-
                 mDatas.add(new Node(userBasisBean.getUserid()+"",userBasisBean.getRongid()+"",s,userBasisBean.getUsername()));
             }
         }

@@ -1,6 +1,7 @@
 package chui.swsd.com.cchui.receiver;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,6 +33,7 @@ import chui.swsd.com.cchui.ui.apply.shenpi.sp_con_details.SpCCDetailsActivity;
 import chui.swsd.com.cchui.ui.apply.shenpi.sp_con_details.SpJBDetailsActivity;
 import chui.swsd.com.cchui.ui.apply.shenpi.sp_con_details.SpQjDetailsActivity;
 import chui.swsd.com.cchui.ui.apply.shenpi.sp_con_details.SpWCDetailsActivity;
+import chui.swsd.com.cchui.ui.login.LoginActivity;
 import chui.swsd.com.cchui.ui.work.notice_details.NoticeDetailsActivity;
 import cn.jpush.android.api.JPushInterface;
 
@@ -41,12 +43,13 @@ import cn.jpush.android.api.JPushInterface;
  */
 
 public class JpushReceiver extends BroadcastReceiver {
-    static String type,objectid;
+    static String type,objectid,approved;
     @Override
     public void onReceive(final Context context, Intent intent) {
         if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Bundle bundle = intent.getExtras();
             String json = bundle.getString(JPushInterface.EXTRA_EXTRA);
+           // String title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
             Log.i("JpushReceiver", json + "******json");
             if(!TextUtils.isEmpty(json)) {
                 try {
@@ -54,6 +57,7 @@ public class JpushReceiver extends BroadcastReceiver {
                     JSONObject jsonObject = new JSONObject(json);
                     type = jsonObject.getString("category");
                     objectid = jsonObject.getString("objectid");
+                    approved = jsonObject.getString("approved");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -102,7 +106,12 @@ public class JpushReceiver extends BroadcastReceiver {
         goLogoIntent.setClass(context.getApplicationContext(),cl);
         goLogoIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         goLogoIntent.putExtra("id", Integer.parseInt(objectid));
-        goLogoIntent.putExtra("spStatus", 1);
+        if(approved.equals("0")){
+            goLogoIntent.putExtra("spStatus", 1);
+        }else{
+            goLogoIntent.putExtra("spStatus", 0);
+        }
+        //
         new Handler().postDelayed(new Runnable(){
             public void run() {
                 context.getApplicationContext().startActivity(goLogoIntent);
@@ -131,5 +140,10 @@ public class JpushReceiver extends BroadcastReceiver {
             }
         }, 1000);
     }
-
+    public void quitLogin(final Context context){
+        final Intent goLogoIntent = new Intent();
+        goLogoIntent.setClass(context.getApplicationContext(), LoginActivity.class);
+        goLogoIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.getApplicationContext().startActivity(goLogoIntent);
+    }
 }

@@ -136,7 +136,7 @@ public class ManagerComActivity extends BaseActivity implements ManagerComContra
                 if(position == mDataList.size()-1) {
                     Intent intent = new Intent(ManagerComActivity.this, SelectPeopleActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("list", (Serializable) mDataList);
+                    bundle.putSerializable("list", (Serializable) lists);
                     intent.putExtras(bundle);
                     startActivity(intent);
                     // startActivity(new Intent(MakeMeetActivity.this, SelectPeopleActivity.class),bundle);
@@ -445,6 +445,7 @@ public class ManagerComActivity extends BaseActivity implements ManagerComContra
         for(CompanyDetailBean.UsersBean usersBean:companyDetailBean.getUsers()){
             Node node = new Node();
             node.setName(usersBean.getName());
+            node.setId(usersBean.getUserid()+"");
             nodeList.add(node);
         }
         FlowAdapter(nodeList);

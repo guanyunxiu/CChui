@@ -82,13 +82,14 @@ public class RedDetailsZBActivity extends BaseSwipeBackActivity implements RedDe
         imageItemAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int i) {
-                List<String> stringList = new ArrayList<String>();
-                String photo = UrlAddress.URLAddress+photoBeanList.get(i).getPath();
-                stringList.add(photo);
+                ArrayList<String> urls = new ArrayList<>();
+                for (PhotoBean photosBean : photoBeanList) {
+                    urls.add(UrlAddress.URLAddress+photosBean.getPath());
+                }
                 Intent intent = new Intent(RedDetailsZBActivity.this, ImagePagerActivity.class);
                 // 图片url,为了演示这里使用常量，一般从数据库中或网络中获取
-                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, (Serializable) stringList);
-                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX,i);
+                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, urls);
+                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, i);
                 startActivity(intent);
             }
         });

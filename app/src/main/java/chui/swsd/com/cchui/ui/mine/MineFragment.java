@@ -78,6 +78,8 @@ public class MineFragment extends BaseFragment{
     protected void initViews() {
        // initTitle(false, "我的");
         titleName.setText("我的");
+        //注册EventBus,先订阅才能传值
+        EventBus.getDefault().register(this);
         initData();
     }
     public void initData(){
@@ -133,5 +135,15 @@ public class MineFragment extends BaseFragment{
                 break;
         }
     }
-
+    @Subscribe          //订阅事件FirstEvent
+    public  void onEventMainThread(String flag){
+        if(flag.equals("头像查询")){
+            initData();
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);//取消注册
+    }
 }

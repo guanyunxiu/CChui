@@ -79,7 +79,7 @@ public class ManagerLoginActivity extends BaseActivity implements LoginContract.
     }
 
     @Override
-    public void onFail() {
+    public void onFailer() {
         mMProgressDialog.dismiss();
     }
 }

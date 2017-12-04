@@ -88,9 +88,11 @@ public class SelectPeopleActivity extends BaseSwipeBackActivity implements AddGr
             for (Node node : mDatas) {
                 for (Node str : sellist) {
                     if(!TextUtils.isEmpty(str.getName())) {
+                        if(!TextUtils.isEmpty(str.getId())) {
                             if (str.getId().equals(node.getId()) && !node.getpId().equals("1")) {
                                 node.setChecked(true);
                             }
+                        }
                     }
                 }
             }

@@ -14,4 +14,5 @@ public class Constants {
     public static double Longitude;//经度
     public static int judgeFlag = 0;
     public static boolean judgeFen  = false;
+    public static int timeFlag = 13;
 }

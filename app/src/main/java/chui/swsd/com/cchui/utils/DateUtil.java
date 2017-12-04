@@ -314,6 +314,13 @@ public class DateUtil {
     String t1=format.format(d1);
     return t1;
   }
+  public static int getDayHour(){
+    long time=System.currentTimeMillis();//long now = android.os.SystemClock.uptimeMillis();
+    SimpleDateFormat format=new SimpleDateFormat("HH");
+    Date d1=new Date(time);
+    String t1=format.format(d1);
+    return Integer.parseInt(t1);
+  }
   public static long getCurrent(){
     return System.currentTimeMillis();
 

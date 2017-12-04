@@ -1,11 +1,13 @@
 package chui.swsd.com.cchui.ui.apply.shenpi.sp_con_details;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.flyco.dialog.listener.OnBtnClickL;
 import com.flyco.dialog.widget.NormalDialog;
 import com.maning.mndialoglibrary.MProgressDialog;
@@ -31,7 +33,10 @@ import chui.swsd.com.cchui.model.GoOutDetailsBean;
 import chui.swsd.com.cchui.model.JiaBanDetailsBean;
 import chui.swsd.com.cchui.model.LeaveDetailsBean;
 import chui.swsd.com.cchui.model.PhotoBean;
+import chui.swsd.com.cchui.net.UrlAddress;
+import chui.swsd.com.cchui.ui.img_browse.ImagePagerActivity;
 import chui.swsd.com.cchui.utils.CommonUtil;
+import retrofit2.BaseUrl;
 
 /**
  * 内容：报销内容
@@ -110,6 +115,21 @@ public class SpBXDetailsActivity extends BaseActivity implements SpDetailsContra
         detailsRv.setLayoutManager(new LinearLayoutManager(this));
         baoXiaoDetailsItemAdapter = new BaoXiaoDetailsItemAdapter(listInfo);
         detailsRv.setAdapter(baoXiaoDetailsItemAdapter);
+
+        photoItemAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, int i) {
+                ArrayList<String> urls = new ArrayList<>();
+                for (PhotoBean photosBean : photoBeanList) {
+                    urls.add(UrlAddress.URLAddress+photosBean.getPath());
+                }
+                Intent intent = new Intent(SpBXDetailsActivity.this, ImagePagerActivity.class);
+                // 图片url,为了演示这里使用常量，一般从数据库中或网络中获取
+                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_URLS, urls);
+                intent.putExtra(ImagePagerActivity.EXTRA_IMAGE_INDEX, i);
+                startActivity(intent);
+            }
+        });
     }
     @Override
     public void finish() {
@@ -162,7 +182,7 @@ public class SpBXDetailsActivity extends BaseActivity implements SpDetailsContra
         depTv.setText(baoXiaoDetailsBean.getUserHead().getDepartment());
         numsTv.setText(baoXiaoDetailsBean.getNumber());
         statusTv.setText(baoXiaoDetailsBean.getApprovedVo().getUsernames()+ CommonUtil.getShStatus(baoXiaoDetailsBean.getApprovedVo().getTypes()));
-        int sum = 0;
+        double sum = 0;
         for(BaoXiaoDetailsBean.ApplayinfoBean applayinfoBean:baoXiaoDetailsBean.getApplayinfo()){
             sum = sum + applayinfoBean.getMoney();
         }
@@ -171,6 +191,7 @@ public class SpBXDetailsActivity extends BaseActivity implements SpDetailsContra
         baoXiaoDetailsItemAdapter.setNewData(baoXiaoDetailsBean.getApplayinfo());
         photoItemAdapter.setNewData(baoXiaoDetailsBean.getApplayphoto());
         baoXiaoDetailsBean2 = baoXiaoDetailsBean;
+        photoBeanList = baoXiaoDetailsBean.getApplayphoto();
     }
     @OnClick({R.id.refuse_tv, R.id.status_lv})
     public void onClick(View view) {

@@ -33,6 +33,7 @@ import butterknife.OnClick;
 import chui.swsd.com.cchui.R;
 import chui.swsd.com.cchui.adapter.DaKaItemAdapter;
 import chui.swsd.com.cchui.base.BaseSwipeBackActivity;
+import chui.swsd.com.cchui.config.Constants;
 import chui.swsd.com.cchui.model.KaoQinBean;
 import chui.swsd.com.cchui.utils.CommonUtil;
 import chui.swsd.com.cchui.utils.DateUtil;
@@ -60,6 +61,8 @@ public class KaoQinActivity extends BaseSwipeBackActivity implements LocationSou
     TextView sBgTv;
     @BindView(R.id.status_tv)
     TextView statusTv;
+    @BindView(R.id.daka_tv)
+    TextView dakaTv;
     private AMap aMap;
     private OnLocationChangedListener mListener;
     private AMapLocationClient mlocationClient;
@@ -69,6 +72,8 @@ public class KaoQinActivity extends BaseSwipeBackActivity implements LocationSou
     KaoQinPresenter kaoQinPresenter;
     MProgressDialog mMProgressDialog;
     private int nums = 0;
+    private int category = 0;
+    private int cateFlag = -1;//查询出来是否是进行了下班打卡
     @Override
     protected int attachLayoutRes() {
         return R.layout.activity_kaoqin;
@@ -91,6 +96,26 @@ public class KaoQinActivity extends BaseSwipeBackActivity implements LocationSou
     Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
+                //上下班判断
+                if(DateUtil.getDayHour()<Constants.timeFlag){
+                    if(cateFlag == 0){
+                        dakaLv.setBackgroundResource(R.mipmap.icon_daka_gray_bg);
+                        dakaTv.setText("已签到");
+                    }else{
+                        dakaLv.setBackgroundResource(R.mipmap.icon_daka_bg);
+                        dakaTv.setText("上班打卡");
+                    }
+                    category = 0;
+                }else{
+                    if(cateFlag == 1){
+                        dakaLv.setBackgroundResource(R.mipmap.icon_daka_gray_bg);
+                        dakaTv.setText("已签退");
+                    }else{
+                        dakaLv.setBackgroundResource(R.mipmap.icon_daka_bg);
+                        dakaTv.setText("下班打卡");
+                    }
+                    category = 1;
+                }
                 timeTv.setText(DateUtil.getTime1());
             }
         }
@@ -99,10 +124,19 @@ public class KaoQinActivity extends BaseSwipeBackActivity implements LocationSou
     long firstTime=0;
     @OnClick(R.id.daka_lv)
     public void onClick() {
-        if(nums <2) {
+        if(cateFlag != 1) {
             long secondTime = System.currentTimeMillis();
-            if (secondTime - firstTime > 1000 * 60) {
-                NormalDialogStyleTwo();
+            if (secondTime - firstTime > 1000 * 5) {
+                Log.i("dayHOUR",DateUtil.getDayHour()+"***");
+                if(DateUtil.getDayHour()<Constants.timeFlag){
+                    if(cateFlag == 0) {
+                        CommonUtil.showToast(this,"已签到");
+                    }else{
+                        NormalDialogStyleTwo("是否进行签到", 0);
+                    }
+                }else{
+                    NormalDialogStyleTwo("是否进行签退",1);
+                }
                 firstTime = System.currentTimeMillis();
             } else {
                 CommonUtil.showToast(this, "打卡次数太频繁");
@@ -111,10 +145,10 @@ public class KaoQinActivity extends BaseSwipeBackActivity implements LocationSou
             CommonUtil.showToast(this,"今日已打卡完毕");
         }
     }
-    private void NormalDialogStyleTwo() {
+    private void NormalDialogStyleTwo(String str, final int categorys) {
         final NormalDialog dialog = new NormalDialog(this);
         dialog
-                .content("现在下班属于早退，是否继续 ")
+                .content(str)
                 .style(NormalDialog.STYLE_TWO)//
                 .titleTextSize(23)//
                 .show();
@@ -128,24 +162,49 @@ public class KaoQinActivity extends BaseSwipeBackActivity implements LocationSou
                 new OnBtnClickL() {
                     @Override
                     public void onBtnClick() {
-
                         mMProgressDialog = CommonUtil.configDialogDefault(KaoQinActivity.this);
                         mMProgressDialog.show("正在打卡...");
-                        kaoQinPresenter.onSubmit(locationTv.getText().toString(),longitude,latitude);
+                        kaoQinPresenter.onSubmit(locationTv.getText().toString(),longitude,latitude,0,categorys);
                         dialog.dismiss();
                     }
                 });
-
-
     }
 
     @Override
-    public void onSuccess() {
-        CommonUtil.showToast(this,"打卡成功");
+    public void onSuccess(int code) {
         mMProgressDialog.dismiss();
-        kaoQinPresenter.onSelect();
+        if(code == 0) {
+            CommonUtil.showToast(this, "打卡成功");
+            kaoQinPresenter.onSelect();
+            dakaLv.setBackgroundResource(R.mipmap.icon_daka_gray_bg);
+        }else if(code == 6){
+            NormalDialogOutWork();
+        }
     }
-
+    private void NormalDialogOutWork() {
+        final NormalDialog dialog = new NormalDialog(this);
+        dialog
+                .content("距离公司位置较远，是否是外出打卡")
+                .style(NormalDialog.STYLE_TWO)//
+                .titleTextSize(23)//
+                .show();
+        dialog.setOnBtnClickL(
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        dialog.dismiss();
+                    }
+                },
+                new OnBtnClickL() {
+                    @Override
+                    public void onBtnClick() {
+                        mMProgressDialog = CommonUtil.configDialogDefault(KaoQinActivity.this);
+                        mMProgressDialog.show("正在打卡...");
+                        kaoQinPresenter.onSubmit(locationTv.getText().toString(),longitude,latitude,1,category);
+                        dialog.dismiss();
+                    }
+                });
+    }
     @Override
     public void onSuccess(List<KaoQinBean> kaoQinBeanList) {
         if(kaoQinBeanList.size()>0) {
@@ -161,9 +220,10 @@ public class KaoQinActivity extends BaseSwipeBackActivity implements LocationSou
             kaoQinItemAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
             recyclerview.setAdapter(kaoQinItemAdapter);
             KaoQinBean kaoQinBean = kaoQinBeanList.get(kaoQinBeanList.size() - 1);
-            if (kaoQinBean.getCategory() == 0) {
+            cateFlag = kaoQinBean.getCategory();
+            if (kaoQinBean.getCategory() == 0) {//上班
                 sBgTv.setText("下");
-            } else if (kaoQinBean.getCategory() == 1) {
+            } else if (kaoQinBean.getCategory() == 1) {//1是下班
                 sBgTv.setText("");
                 statusTv.setVisibility(View.VISIBLE);
                 statusTv.setText("工作辛苦了，好好休息");
@@ -174,7 +234,9 @@ public class KaoQinActivity extends BaseSwipeBackActivity implements LocationSou
 
     @Override
     public void onFail() {
-        mMProgressDialog.dismiss();
+        if(mMProgressDialog != null) {
+            mMProgressDialog.dismiss();
+        }
     }
 
     class ThreadShow implements Runnable {

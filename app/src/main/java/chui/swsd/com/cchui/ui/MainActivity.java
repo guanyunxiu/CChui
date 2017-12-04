@@ -20,6 +20,9 @@ import com.cretin.www.cretinautoupdatelibrary.utils.CretinAutoUpdateUtils;
 import com.multilevel.treelist.Node;
 import com.tbruyelle.rxpermissions.RxPermissions;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +32,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import chui.swsd.com.cchui.R;
 import chui.swsd.com.cchui.base.BaseActivity;
+import chui.swsd.com.cchui.base.SealAppContext;
 import chui.swsd.com.cchui.model.DepConBean;
+import chui.swsd.com.cchui.net.UrlAddress;
 import chui.swsd.com.cchui.ui.apply.ApplyFragment;
 import chui.swsd.com.cchui.ui.contacts.ContractsFragment;
 import chui.swsd.com.cchui.ui.contacts.ost.OstContract;
@@ -87,10 +92,14 @@ public class MainActivity extends BaseActivity implements OstContract.view, Drag
     protected void initViews() {
         isActivity = false;
         ostPresenter = new OstPresenter(this,this);
-        ostPresenter.onSelect();
+        //ostPresenter.onSelect();
+        //SealAppContext.init(this);
+        //注册EventBus,先订阅才能传值
+        EventBus.getDefault().register(this);
         setSelect(0);
         getPermission();
         CretinAutoUpdateUtils.getInstance(MainActivity.this).check();
+
     }
 
     @Override
@@ -277,7 +286,6 @@ public class MainActivity extends BaseActivity implements OstContract.view, Drag
 
     @Override
     public void onSuccess(List<DepConBean> list) {
-        mDatas.clear();
         getList(list);
     }
 
@@ -285,20 +293,14 @@ public class MainActivity extends BaseActivity implements OstContract.view, Drag
     public void onFail() {
 
     }
-    public List<Node> mDatas = new ArrayList<Node>();
-    public List<Node> getList(List<DepConBean> list){
+    public void getList(List<DepConBean> list){
         for(int m=2;m<list.size()+2;m++){
             DepConBean depConBean = list.get(m-2);
-            String s = m+"";
-            mDatas.add(new Node(s,"",1+"",depConBean.getName()));
             for(DepConBean.UserBasisBean userBasisBean:depConBean.getUserBasis()){
-                UserInfo userInfo = new UserInfo(userBasisBean.getRongid(), userBasisBean.getUsername(), Uri.parse(""));
-                RongIM.getInstance().setCurrentUserInfo(userInfo);
-                RongIM.getInstance().setMessageAttachedUserInfo(true);
-                mDatas.add(new Node(userBasisBean.getUserid()+"",userBasisBean.getRongid()+"",s,userBasisBean.getUsername()));
+                UserInfo userInfo = new UserInfo(userBasisBean.getRongid(),userBasisBean.getUsername(), Uri.parse(UrlAddress.URLAddress+userBasisBean.getHeadimg()));
+                RongIM.getInstance().refreshUserInfoCache(userInfo);
             }
         }
-        return mDatas;
     }
     @Override
     public void onCountChanged(int count) {
@@ -332,4 +334,16 @@ public class MainActivity extends BaseActivity implements OstContract.view, Drag
         }, mConversationsTypes);
     }
 
+
+    @Subscribe          //订阅事件FirstEvent
+    public  void onEventMainThread(String flag){
+        if(flag.equals("群组查询")){
+            ostPresenter.onSelect();
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);//取消注册
+    }
 }

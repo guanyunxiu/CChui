@@ -121,6 +121,7 @@
         <activity android:name=".ui.register.RegisterSelectActivity"></activity>
         <activity android:name=".ui.apply.yuandl.dafen_new.DaFenMainActivity"></activity>
         <activity android:name=".ui.apply.yuandl.dafen_new.DaFenSelectPeopleActivity"></activity>
+        <activity android:name=".ui.TestActivity"></activity>
         <activity android:name=".ui.WelcomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreen_Welcome"
@@ -146,6 +147,16 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/rc_file_path" />
+        </provider>
+        <provider
+            android:name=".provider.MyFileInstallProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false"
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/install_file" />
         </provider>
         <!--会话界面-->
         <activity

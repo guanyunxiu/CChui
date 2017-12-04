@@ -42,11 +42,14 @@
                 android:focusableInTouchMode="true"
                 android:paddingLeft="@dimen/height_10"
                 android:inputType="number"
-                android:maxLines="1"
                 android:textColorHint="#FFFFFF"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:nextFocusForward="@+id/name_et"
+                android:maxLines="1"
                 />
 
         </LinearLayout>
@@ -79,12 +82,18 @@
                 android:drawableBottom="@drawable/edit_line_bg"
                 android:textColor="@color/white"
                 android:focusable="true"
-                android:textCursorDrawable="@null"
+                android:textCursorDrawable="@drawable/color_cursor"
                 android:focusableInTouchMode="true"
                 android:paddingLeft="@dimen/height_10"
-                android:inputType="textPersonName"
-                android:maxLength="32"
-                android:ellipsize="end"
+                android:textColorHint="#FFFFFF"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:nextFocusForward="@+id/pass_et"
+                android:maxLines="1"
+
                 />
         </LinearLayout>
     </LinearLayout>
@@ -124,6 +133,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:nextFocusForward="@+id/qrpass_et"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -162,6 +174,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:imeOptions="actionDone"
+                android:singleLine="true"
                 />
         </LinearLayout>
     </LinearLayout>

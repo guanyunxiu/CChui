@@ -370,6 +370,7 @@ public class MyInfoActivity extends BaseSwipeBackActivity implements SeldataCont
            //修改融云信息
            RongIM.getInstance().setCurrentUserInfo(new UserInfo(BaseApplication.mSharedPrefUtil.getString(SharedConstants.USERID,""), BaseApplication.mSharedPrefUtil.getString(SharedConstants.NAME,""), Uri.parse(UrlAddress.URLAddress+BaseApplication.mSharedPrefUtil.getString(SharedConstants.PHOTO,""))));
            RongIM.getInstance().setMessageAttachedUserInfo(true);
+           EventBus.getDefault().post("头像查询");
        }
         nameTv.setText(userBean.getName());
         if(BaseApplication.mSharedPrefUtil.getString(SharedConstants.DEPARTMENT,"").equals("0")){

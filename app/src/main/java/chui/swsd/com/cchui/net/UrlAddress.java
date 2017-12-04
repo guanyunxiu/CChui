@@ -6,7 +6,8 @@ package chui.swsd.com.cchui.net;
  */
 
 public class UrlAddress {
-    public static String URLAddress = "http://192.168.123.250:8888";
+    public static String URLAddress = "http://124.166.230.43:40003";
+    //public static String URLAddress = "http://192.168.123.250:8888";
     public static String URL = URLAddress + "/Beat/";
     public static String REGISTER = "user/register.action";   //注册
     public static String LOGIN = "user/login.action"; //登录
@@ -72,4 +73,5 @@ public class UrlAddress {
     public static String POWERGRADE= "power/grade.action";   //添加源动力分数
     public static String INTEGRAL= "user/integral.action";   //添加自己的源动力分数
     public static String SIGNTODAY2= URL+"sign/today.action";//查看当天考勤
+    public static String SELRONGID= "user/seldatabyrongid.action";   //根据rongid查询用户信息
 }

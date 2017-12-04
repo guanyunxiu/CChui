@@ -116,7 +116,7 @@ public class ChuChaiDetailsBean {
         private String address;
         private String starttime;
         private String endtime;
-        private int days;
+        private double days;
         private String reason;
         private String time;
         private String auditid;
@@ -171,11 +171,11 @@ public class ChuChaiDetailsBean {
             this.endtime = endtime;
         }
 
-        public int getDays() {
+        public double getDays() {
             return days;
         }
 
-        public void setDays(int days) {
+        public void setDays(double days) {
             this.days = days;
         }
 

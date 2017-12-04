@@ -11,7 +11,7 @@ public class LoginContract {
     public interface view{
        void onSuccess(UserBean userBean);
         void onSuccess();
-       void onFail();
+       void onFailer();
    }
      public interface Presenter{
         void onLogin(String phone,String pass);

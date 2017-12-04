@@ -17,13 +17,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import chui.swsd.com.cchui.config.SharedConstants;
+import chui.swsd.com.cchui.inter.RongInterface;
 import chui.swsd.com.cchui.model.DepConBean;
 import chui.swsd.com.cchui.model.GroupListBean;
+import chui.swsd.com.cchui.model.UserBean;
 import chui.swsd.com.cchui.net.UrlAddress;
 import chui.swsd.com.cchui.ui.contacts.ost.OstContract;
 import chui.swsd.com.cchui.ui.contacts.ost.OstPresenter;
 import chui.swsd.com.cchui.ui.group.AddGroupContract;
 import chui.swsd.com.cchui.ui.group.AddGroupPresenter;
+import chui.swsd.com.cchui.ui.mine.my_info.SeldataContract;
+import chui.swsd.com.cchui.ui.mine.my_info.SeldataPresenter;
 import chui.swsd.com.cchui.utils.CommonUtil;
 import io.rong.imkit.RongIM;
 import io.rong.imkit.model.GroupNotificationMessageData;
@@ -46,12 +51,13 @@ import io.rong.message.ImageMessage;
  */
 public class SealAppContext implements
         RongIM.UserInfoProvider,
-        RongIM.GroupInfoProvider,
-         AddGroupContract.view
+        RongIM.GroupInfoProvider,RongIM.LocationProvider,RongIM.GroupUserInfoProvider,
+         AddGroupContract.view,SeldataContract.view
      {
 
     private static final int CLICK_CONVERSATION_USER_PORTRAIT = 1;
          AddGroupPresenter addGroupPresenter;
+         SeldataPresenter seldataPresenter;
          private Context mContext;
     private final static String TAG = "SealAppContext";
     public static final String UPDATE_FRIEND = "update_friend";
@@ -59,28 +65,43 @@ public class SealAppContext implements
     public static final String UPDATE_GROUP_NAME = "update_group_name";
     public static final String UPDATE_GROUP_MEMBER = "update_group_member";
     public static final String GROUP_DISMISS = "group_dismiss";
+         private static SealAppContext mRongCloudInstance;
          public SealAppContext(Context mContext) {
              this.mContext = mContext;
-
-         }
-         public void init(){
              initListener();
-             addGroupPresenter = new AddGroupPresenter(this, mContext);
+         }
+         public static void init(Context mContext){
+
+             if (mRongCloudInstance == null) {
+                 synchronized (SealAppContext.class) {
+
+                     if (mRongCloudInstance == null) {
+                         mRongCloudInstance = new SealAppContext(mContext);
+                     }
+                 }
+             }
 
          }
          private void initListener() {
+             addGroupPresenter = new AddGroupPresenter(this, mContext);
+             seldataPresenter = new SeldataPresenter(this,mContext);
              RongIM.setUserInfoProvider(this, true);
              RongIM.setGroupInfoProvider(this, true);
+             RongIM.setGroupUserInfoProvider(this,true);
+             RongIM.setLocationProvider(this);//设置地理位置提供者,不用位置的同学可以注掉此行代码
+             Log.i("response","有没有执行");
          }
          @Override
          public Group getGroupInfo(String s) {
+             Log.i("responsegetUserInfo",s+"***group");
              addGroupPresenter.onSelectDetails(s);
              return null;
          }
 
          @Override
          public UserInfo getUserInfo(String s) {
-
+             Log.i("responsegetUserInfo",s+"***user");
+             seldataPresenter.onRongSelect(s);
              return null;
          }
 
@@ -100,4 +121,31 @@ public class SealAppContext implements
                RongIM.getInstance().refreshGroupInfoCache(group);
          }
 
+         @Override
+         public void onSuccess(UserBean userBean) {
+             UserInfo userInfo = new UserInfo(userBean.getRongid(),userBean.getName(), Uri.parse(UrlAddress.URLAddress+userBean.getHeadimg()));
+             RongIM.getInstance().refreshUserInfoCache(userInfo);
+          //   RongIM.getInstance().refreshUserInfoCache(new UserInfo("userId", "啊明", Uri.parse("http://rongcloud-web.qiniudn.com/docs_demo_rongcloud_logo.png")));
+         }
+
+         @Override
+         public void onSuccess() {
+
+         }
+
+         @Override
+         public void onFail() {
+
+         }
+
+         @Override
+         public void onStartLocation(Context context, LocationCallback locationCallback) {
+
+         }
+
+         @Override
+         public GroupUserInfo getGroupUserInfo(String s, String s1) {
+             Log.i("groupuserinfo",s+"*****"+s1);
+             return null;
+         }
      }

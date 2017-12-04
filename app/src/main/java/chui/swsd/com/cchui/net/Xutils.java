@@ -38,6 +38,7 @@ public class Xutils {
             }
             @Override
             public void onCancelled(Callback.CancelledException cex) {
+                Log.i("success", "CancelledException: " + cex.toString());
                 if (requestMethod!=null){
                     requestMethod.onFail();
                 }
@@ -45,6 +46,7 @@ public class Xutils {
 
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
+                Log.i("success", "Throwable: " + ex.toString());
                 if (requestMethod!=null){
                     requestMethod.onFail();
                 }

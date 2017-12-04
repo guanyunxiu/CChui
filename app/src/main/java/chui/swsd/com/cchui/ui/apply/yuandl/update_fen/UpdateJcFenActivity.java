@@ -38,6 +38,7 @@ public class UpdateJcFenActivity extends BaseActivity {
     @Override
     protected void initViews() {
         flag = getIntent().getIntExtra("flag",0);
+        mWebView.getSettings().setTextZoom(100);
         mWebView.getSettings().setJavaScriptEnabled(true);
         int id = BaseApplication.mSharedPrefUtil.getInt(SharedConstants.ID,0);
         mWebView.loadUrl(UrlAddress.URL+"integral/view.action?name=basis&userid="+id+"&cid="+BaseApplication.mSharedPrefUtil.getInt(SharedConstants.COMID,0));

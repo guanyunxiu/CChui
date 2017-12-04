@@ -65,12 +65,17 @@ public class LoginActivity extends BaseActivity implements LoginContract.view,Ro
     LoginPresenter loginPresenter;
     MProgressDialog mMProgressDialog;
     UserBean userBean2;
+    private int rongStatus;
     @Override
     protected int attachLayoutRes() {
         return R.layout.activity_login;
     }
     @Override
     protected void initViews() {
+        rongStatus = getIntent().getIntExtra("rongstatus",0);
+        if(rongStatus == 1){
+            CommonUtil.showToast(this,"您的账号已在别的设备登录，请重新登录");
+        }
         loginPresenter = new LoginPresenter(this,this);
         phoneEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -154,9 +159,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.view,Ro
     }
 
     @Override
-    public void onFail() {
+    public void onFailer() {
         mMProgressDialog.dismiss();
-
     }
     //表示融云连接成功
     @Override

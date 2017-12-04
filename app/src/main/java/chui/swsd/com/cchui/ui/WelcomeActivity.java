@@ -9,6 +9,7 @@ import android.util.Log;
 
 import chui.swsd.com.cchui.R;
 import chui.swsd.com.cchui.base.BaseApplication;
+import chui.swsd.com.cchui.base.SealAppContext;
 import chui.swsd.com.cchui.config.Constants;
 import chui.swsd.com.cchui.config.SharedConstants;
 import chui.swsd.com.cchui.inter.RongInterface;
@@ -92,14 +93,15 @@ public class WelcomeActivity extends AppCompatActivity implements LoginContract.
     }
 
     @Override
-    public void onFail() {
+    public void onFailer() {
         CommonUtil.showToast(this,"登录失败，请重新登录");
-        finish();
-        overridePendingTransition(R.anim.hold, R.anim.zoom_in_exit);
-        RongConnectUtil rongConnectUtil = new RongConnectUtil(this);
-        rongConnectUtil.connect(BaseApplication.mSharedPrefUtil.getString(SharedConstants.TOKEN,""));//连接融云服务器
-        Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+
+        //overridePendingTransition(R.anim.hold, R.anim.zoom_in_exit);
+      //  RongConnectUtil rongConnectUtil = new RongConnectUtil(this);
+       // rongConnectUtil.connect(BaseApplication.mSharedPrefUtil.getString(SharedConstants.TOKEN,""));//连接融云服务器
+        Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
